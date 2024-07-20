@@ -26006,6 +26006,8 @@ setMenuTabs();
 
 //Let's add a wheel event
 menu.onwheel = scrollMenu;
+//Handle touch events
+let touchStartY = 0;
 
 //Some variables to estimate the scroll speed
 let velocity = 0;
@@ -26017,11 +26019,27 @@ let requestId;
 function scrollMenu(event){
   
   event.preventDefault();
-  velocity = -parseFloat(event.deltaY*0.1);
+  velocity = -parseFloat(getDeltaY(event)*0.1);
   
   if(!requestId){
     updateAnimation();
   }
+}
+
+function getDeltaY(event){
+  if(event.type === 'wheel'){
+    return event.deltaY;
+  }else if(event.type === 'touchmove'){
+    if(!touchStartY){
+      touchStartY = event.touches[0].clientY;
+      return 0;
+    }
+    const touchEndY = event.touches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+    touchStartY = touchEndY;
+    return deltaY;
+  }
+  return 0;
 }
 
 function updateAnimation(){
@@ -26055,6 +26073,7 @@ function menuScrollFinished(){
     tab.style.transform = "translate(0,0) skewY(0)";
     tab.style.transition = "transform 0.7s ease-in-out, opacity 1s ease-in-out"
   });
+  touchStartY = 0;
 }
 
 menuButton.addEventListener('mouseenter',highlightMenu);
