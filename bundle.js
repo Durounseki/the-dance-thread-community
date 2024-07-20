@@ -26008,6 +26008,8 @@ setMenuTabs();
 menu.onwheel = scrollMenu;
 //Handle touch events
 let touchStartY = 0;
+menu.addEventListener("touchstart",handleTouchStart);
+menu.addEventListener("touchmove",scrollMenu);
 
 //Some variables to estimate the scroll speed
 let velocity = 0;
@@ -26030,16 +26032,20 @@ function getDeltaY(event){
   if(event.type === 'wheel'){
     return event.deltaY;
   }else if(event.type === 'touchmove'){
-    if(!touchStartY){
-      touchStartY = event.touches[0].clientY;
-      return 0;
-    }
+    // if(!touchStartY){
+    //   touchStartY = event.touches[0].clientY;
+    //   return 0;
+    // }
     const touchEndY = event.touches[0].clientY;
     const deltaY = touchStartY - touchEndY;
     touchStartY = touchEndY;
     return deltaY;
   }
   return 0;
+}
+
+function handleTouchStart(event){
+  touchStartY = event.touches[0].clientY;
 }
 
 function updateAnimation(){
