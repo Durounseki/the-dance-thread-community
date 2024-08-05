@@ -94,13 +94,6 @@ body{
     min-height: 100dvh;
     color: var(--main-dark);
     position: relative;
-    cursor: none;
-}
-
-@media (max-width: 600px){
-    body{
-        cursor: auto;
-    }
 }
 
 /* Preload */
@@ -120,6 +113,35 @@ body{
 
 /* Home screen */
 
+.home-tabs{
+    height: 100dvh;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; 
+}
+
+.home-tabs::-webkit-scrollbar{
+    display: none;
+}
+
+.home-tab{
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+}
+
+.home-tab svg:hover{
+    cursor: pointer;
+}
+
+#events-tab-svg, #classes-tab-svg, #socials-tab-svg{
+    width: 90dvw;
+    max-width: 100%;
+}
+
 .home-screen{
     overflow: hidden;
     white-space: nowrap;
@@ -136,7 +158,7 @@ body{
 }
 
 
-.slide{
+.frame{
     height: 100dvh;
 }
 
@@ -145,7 +167,7 @@ body{
     to { transform: translateX(-100%) }
 }
 
-.slide source{
+.frame source{
     width: 100%;
 }
 
@@ -214,7 +236,7 @@ body{
 
 .get-started{
     border: none;
-    font-family: 'Intro';
+    font-family: 'Intro', Helvetica, sans-serif;
     font-size: 24px;
     padding: 0 30px;
     padding-top: 17px;
@@ -346,12 +368,12 @@ body{
 }
 
 #menu-button{
-    font-family: 'Intro';
+    font-family: 'Intro', Helvetica, sans-serif;
 }
 
 #close-button{
     color: #141414;
-    font-family: 'Intro';
+    font-family: 'Intro', Helvetica, sans-serif;
 }
 
 /* Menu page */
@@ -412,7 +434,7 @@ body{
     text-align: right;
     position: absolute;
     font-weight: 900;
-    font-family: 'Intro';
+    font-family: 'Intro', Helvetica, sans-serif;
     right: 25vw;
     font-size: 10vw;
     margin: 0;
@@ -446,7 +468,7 @@ body{
 
 .menu-container:before{
     content: "";
-    height: 30%;
+    height: 20%;
     width: 100%;
     background: linear-gradient(to bottom, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);
     position: absolute;
@@ -458,7 +480,7 @@ body{
 
 .menu-container:after{
     content: "";
-    height: 30%;
+    height: 20%;
     width: 100%;
     background: linear-gradient(to top, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);
     position: absolute;
@@ -477,22 +499,6 @@ body{
     }
 }
 
-/* .menu-container.show .menu .tab:nth-child(2){
-    transition-delay: 0.1s;
-} */
-/* .menu-container.show .menu .tab:nth-child(3){
-    transition-delay: 0.2s;
-}
-.menu-container.show .menu .tab:nth-child(4){
-    transition-delay: 0.3s;
-}
-.menu-container.show .menu .tab:nth-child(5){
-    transition-delay: 0.4s;
-} */
-
-/* .main-logo, .aux-logo{
-    position: ab
-} */
 
 .main-logo.show, .aux-logo.show{
     opacity: 1;
@@ -835,7 +841,7 @@ a{
     }
 }
 
-.slide-container{
+.card-container{
     height: 100%;
     width: 60%;
     position: absolute;
@@ -849,23 +855,23 @@ a{
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.slide-container:not(.active){
+.card-container:not(.active){
     transform: translate(100%,-50%);
     opacity: 0;
 }
 
-.slide-container{
+.card-container{
     transform: translate(-50%,-50%);
     opacity: 1;
 }
 
-.slide-container.was-active:not(.active){
+.card-container.was-active:not(.active){
     transform: translate(-200%,-50%);
     opacity: 0;
 }
 
 @media (max-width: 600px) {
-    .slide-container{
+    .card-container{
         width: 90%;
     }
 }
@@ -900,7 +906,7 @@ a{
 
 .content:before{
     content: "";
-    height: 30%;
+    height: 20%;
     width: 100%;
     background: linear-gradient(to bottom, #141414 0%, #14141400 100%);
     position: fixed;
@@ -912,7 +918,7 @@ a{
 
 .content:after{
     content: "";
-    height: 30%;
+    height: 20%;
     width: 100%;
     background: linear-gradient(to top, #141414 0%, #14141400 100%);
     position: fixed;
@@ -934,15 +940,15 @@ a{
 
 .mission{
     max-width: 800px;
-    padding-top: 180px;
+    padding-top: 120px;
     margin: 0 auto;
     /* transform: translateY(180px); */
 
     h1{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         font-size: 60px;
         color:#ffa6db;
-        margin: 120px 0;
+        margin: 60px 0;
     }
     p{
         font-size: 24px;
@@ -953,11 +959,12 @@ a{
 
 @media (max-width: 600px) {
     .mission{
-        padding-top: 120px;
-        text-align: center;
+        padding-top: 60px;
+        
         h1{
             font-size: 36px;
             margin: 60px 0;
+            text-align: center;
         }
         p{
             font-size: 18px;
@@ -968,10 +975,8 @@ a{
 .team-container{
     width: 100%;
     margin: 0 auto;
-    /* padding-bottom: 180px; */
-    /* transform: translateY(200px); */
     h1{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         font-size: 60px;
         color:#ffa6db;
         margin: 120px 0;
@@ -1005,44 +1010,27 @@ a{
     width: 200px;
 }
 
-/* .member-picture-container{ */
-    /* position: relative; */
-/* } */
-
 .member-picture{
     border-radius: 0 60px 60px 0;
     overflow: hidden;
 }
 
 .member-picture.color{
-    /* transition: all 0.5s ease-in-out; */
     transform-origin: center;
-    /* transform: scale(0); */
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
     border-radius: 0 60px 60px 0;
-    /* border-radius: 50%; */
-    /* opacity: 0; */
 }
 
 .member-picture.color.show{
-    /* transform: scale(1); */
     border-radius: 0 60px 60px 0;
     opacity: 1;
 }
 
 .filter-pic{
     width: 200px;
-    /* position: relative;
-    top: 0; */
 }
 
 .color-pic{
     width: 200px;
-    /* position: relative; */
-    /* top: 0; */
-    /* border-radius: 0 60px 60px 0; */
 }
 
 .member-name{
@@ -1057,12 +1045,11 @@ a{
 .partners{
 
     max-width: 800px;
-    padding-bottom: 180px;
+    padding-bottom: 120px;
     margin: 0 auto;
-    /* transform: translateY(180px); */
 
     h1{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         font-size: 60px;
         color:#ffa6db;
         margin: 120px 0;
@@ -1073,16 +1060,16 @@ a{
         color: #fff5ff;
     }
     a{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         color: #b4d4ee;
     }
 }
 
 @media (max-width: 600px) {
     .partners{
-        text-align: center;
         padding-bottom: 120px;
         h1{
+            text-align: center;
             font-size: 36px;
             margin: 60px 0;
         }
@@ -1110,7 +1097,7 @@ a{
 
 .contact-us-title{
     color: #ffa6db;
-    font-family: 'Intro', sans-serif;
+    font-family: 'Intro', sans-serif, Helvetica, sans-serif;
     margin: 60px 0;
     font-size: 60px;
     grid-column: 1/3;
@@ -1140,14 +1127,9 @@ a{
     }
 }
 
-/* .contact-button-container{
-    position: relative;
-    padding: 20px 40px;
-} */
-
 .contact-button{
     color: #b4d4ee;
-    font-family: 'Intro', sans-serif;
+    font-family: 'Intro', Helvetica, sans-serif;
     font-size: 10vw;
     padding-top: 2vw;
 }
@@ -1161,29 +1143,12 @@ a{
     }
 }
 
-/* .contact-button.active{
-    opacity: 1;
-} */
-
-/* .stripe{
-    color: #b4d4ee;
-    font-family: 'Intro', sans-serif;
-    font-size: 10vw;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    top: 0;
-    transition: all 1s ease-out;
-} */
-
 /* Teaser */
 
 .teaser-title{
     max-width: 800px;
     padding-top: 200px;
-    font-family: 'Intro';
+    font-family: 'Intro', Helvetica, sans-serif;
     font-size: 60px;
     color:#ffa6db;
     margin-bottom: 0;
@@ -1204,7 +1169,7 @@ a{
     line-height: 1.5;
     color: #fff5ff;
     a{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         color: #b4d4ee;
     }
     padding-bottom: 200px;
@@ -1223,7 +1188,7 @@ a{
     line-height: 1.5;
     color: #fff5ff;
     a{
-        font-family: 'Intro';
+        font-family: 'Intro', Helvetica, sans-serif;
         color: #b4d4ee;
     }
 }
@@ -1256,35 +1221,339 @@ footer{
     justify-items: center;
 }
 
-/* footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 24px;
-    align-items: center;
-} */
-
-/* .sns-container{
-    display: flex;
-    justify-content: space-around;
-    font-size: 24px;
-} */
-
 .sns{
     color: var(--main-color);
     font-size: 20px;
-    /* border: solid 1px #fff5ff;
-    padding: 8px;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px */
 }
 
 footer.dark{
     color: #141414;
 }
 
-`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":[":root{\n    --cursor-x: 0;\n    --cursor-y: 0;\n    --shadow-x: 0;\n    --shadow-y: 0;\n}\nbody{\n    margin: 0;\n    max-height: 100dvh;\n    max-width: 100vw;\n    font-family: Helvetica, sans-serif; /*'Audiowide';*/\n    /* letter-spacing: 0.005cm; */\n    display: flex;\n    flex-direction: column;\n    min-height: 100dvh;\n    color: var(--main-dark);\n    position: relative;\n    cursor: none;\n}\n\n@media (max-width: 600px){\n    body{\n        cursor: auto;\n    }\n}\n\n/* Preload */\n\n.preload{\n    background-color: none;\n    width: 100vw;\n    height: 100dvh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2;\n}\n\n/* Home screen */\n\n.home-screen{\n    overflow: hidden;\n    white-space: nowrap;\n    position: relative;\n}\n\n.carousel{\n    height: 100dvh;\n    /* width: 100vw; */\n    \n    display: inline-block;\n    background-color: #141414;\n    animation: 36s swipe infinite linear;\n}\n\n\n.slide{\n    height: 100dvh;\n}\n\n@keyframes swipe {\n    from { transform: translateX(0)}\n    to { transform: translateX(-100%) }\n}\n\n.slide source{\n    width: 100%;\n}\n\n.overlay{\n    position: absolute;\n    top: 0%;\n    left: 0%;\n    width: 100vw;\n    height: 100dvh;\n    /* background-color: rgba(20,20,20,0.5); */\n    background-image: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,1) 50vw, rgba(20,20,20,1) 70vw,rgba(20,20,20,1) 100%);\n    text-align: center;\n    color: #fff5ff;\n    display: flex;\n    flex-direction: column;\n    /* justify-content: center; */\n    align-items: center;\n    padding: 0 30px;\n    box-sizing: border-box;\n    gap: 30px;\n    transition: background-image 1s ease-in-out;\n}\n\n\n.overlay .logo-container{\n    opacity: 0;\n    img{\n        height: 200px;\n    }\n}\n\n.overlay .introduction, .overlay .get-started{\n    opacity: 0;\n    transition: opacity 1s ease-in-out, transform 0.3s ease-in-out;\n}\n\n.overlay.show{\n    background-image: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,0.5) 50vw, rgba(20,20,20,0.5) 70vw,rgba(20,20,20,1) 100%);\n    .introduction, .get-started, .logo-container{\n        opacity: 1;\n        z-index: 4;\n    }\n}\n\n.logo-container{\n    margin-top: 30vh;\n}\n\n@media (max-width: 600px){\n    .logo-container{\n        margin-top: 20vh;\n    }\n}\n\n.introduction{\n    width: 80vw;\n    white-space: wrap;\n}\n\n@media (max-width: 600px){\n    .introduction{\n        font-size: 24px;\n        /* margin-top: 10vh; */\n    }\n}\n\n.get-started{\n    border: none;\n    font-family: 'Intro';\n    font-size: 24px;\n    padding: 0 30px;\n    padding-top: 17px;\n    padding-bottom: 11px;\n    border-radius: 27px;\n    background-color: #ffa6db;\n    color:#fff5ff;\n    transform: scale(1);\n    /* box-shadow: 0px 0px 10px rgba(20,20,20,1); */\n}\n\n.get-started:hover{\n    cursor: pointer;\n    color: #cb56e6;\n    background-color: #fff5ff;\n    transform: scale(1.05);\n}\n\n/* Page content */\n\n.page{\n    width: 100vw;\n    height: 100dvh;\n    background-color: #141414;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 4;\n    opacity: 0;\n    transition: opacity 0.5s ease-in;\n    /* position: relative; */\n}\n\n.page.active{\n    opacity: 1;\n    z-index: 5;\n}\n\n.page .logo-container{\n    position: absolute;\n    top: 40px;\n    left: 60px;\n    transition: transform 0.5s ease-in-out;\n    transform: translateX(-100%);\n    margin: 0;\n    z-index: 9;\n}\n\n@media (max-width: 600px){\n    .page .logo-container{\n        top: 20px;\n        left: 30px;\n    }\n}\n\n.page .logo-container.show{\n    transform: translateX(0);\n}\n\n.page.active .buttons-container{\n    opacity: 1;\n    transform: translateX(0);\n}\n\n.main-logo, .aux-logo{\n    height: 60px;\n    opacity: 0;\n    transition: opacity 0.25s ease-in-out;\n}\n\n@media (max-width: 600px){\n    .main-logo, .aux-logo{\n        height: 40px;\n    }\n}\n\n.main-logo.show, .aux-logo.show{\n    opacity: 1;\n}\n\n.buttons-container{\n    overflow: hidden;\n    height: 24px;\n    position: absolute;\n    top: 60px;\n    right: 60px;\n    width: 70px;\n    transform: translateX(100%);\n    opacity: 0;\n    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;\n    z-index: 9;\n}\n\n@media (max-width: 600px) {\n    .buttons-container{\n        top: 30px;\n        right: 30px;\n    }\n}\n\n.buttons-container:hover{\n    cursor: pointer;\n}\n\n.buttons{\n    position: relative;\n    width: 100%;\n    display: flex;\n    justify-content: center;\n}\n\n.button{\n    position: absolute;\n    color: #fff5ff;\n    opacity: 0;\n    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;\n}\n\n.menu-button{\n    transform: translateY(-100%);\n}\n.close-button{\n    translate: translateY(100%);\n}\n\n.button.active{\n    transform: translateY(0);\n    opacity: 1;\n}\n\n#menu-button{\n    font-family: 'Intro';\n}\n\n#close-button{\n    color: #141414;\n    font-family: 'Intro';\n}\n\n/* Menu page */\n.menu-container{\n    height: 50px;\n    width: 100px;\n    border-radius: 25px;\n    position: absolute;\n    top: 42px;\n    right: 45px;\n    background-color: #ffa6db;\n    transform: scale(0);\n    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, top 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;\n    overflow: hidden;\n    z-index: 7;\n}\n\n.menu-container.highlight{\n    transform: scale(1);\n}\n\n.menu-container.show{\n    width: 100vw;\n    height: 100dvh;\n    border-radius: 0;\n    top: 0;\n    right: 0;\n    position: absolute;\n    /* animation: expandMenu 0.8s ease-in-out forwards; */\n}\n\n@media (max-width: 600px){\n    .menu-container{\n        top: 15px;\n        right: 15px;\n    }\n    .menu-container.show{\n        transform: scale(1);\n    }\n}\n\n/* .tab{\n    position: absolute;\n    font-size: 10vw;\n    margin: 0;\n    color: #fff5ff;\n} */\n.menu{\n    position: relative;\n    right: 25vw;\n    top: 0;\n    height: 100dvh;\n    display: flex;\n    flex-direction: column;\n}\n\n.menu-container .tab{\n    text-align: right;\n    position: absolute;\n    font-weight: 900;\n    font-family: 'Intro';\n    right: 25vw;\n    font-size: 10vw;\n    margin: 0;\n    color: #141414;\n    /* opacity: 0; */\n    /* transform: translate(-100%,0); */\n    transition: transform 0.7s ease-in-out, opacity 1s ease-in-out;\n}\n\n.menu-container .tab:hover{\n    cursor: pointer;\n    color: #fff5ff;\n}\n\n@media (max-width: 600px) {\n    .menu-container .menu{\n        right: 10vw;\n        top: 20vh;\n        height: 60vh;\n    }\n    .menu-container .tab{\n        font-size: 48px;\n        right: 15vw;\n    }\n}\n\n/* .menu-container .tab.show{\n    transform: translate(0,0);\n    opacity: 1;\n} */\n\n.menu-container:before{\n    content: \"\";\n    height: 30%;\n    width: 100%;\n    background: linear-gradient(to bottom, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);\n    position: absolute;\n    top:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n.menu-container:after{\n    content: \"\";\n    height: 30%;\n    width: 100%;\n    background: linear-gradient(to top, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);\n    position: absolute;\n    bottom:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n@media (max-width: 600px) {\n    .menu-container:before{\n        background:  linear-gradient(to bottom, #ffa6db 0%, #ffa6db 80px, #ffa6db00 100%);\n    }\n    .menu-container:after{\n        background:  linear-gradient(to top, #ffa6db 0%, #ffa6db 80px, #ffa6db00 100%);\n    }\n}\n\n/* .menu-container.show .menu .tab:nth-child(2){\n    transition-delay: 0.1s;\n} */\n/* .menu-container.show .menu .tab:nth-child(3){\n    transition-delay: 0.2s;\n}\n.menu-container.show .menu .tab:nth-child(4){\n    transition-delay: 0.3s;\n}\n.menu-container.show .menu .tab:nth-child(5){\n    transition-delay: 0.4s;\n} */\n\n/* .main-logo, .aux-logo{\n    position: ab\n} */\n\n.main-logo.show, .aux-logo.show{\n    opacity: 1;\n}\n\n/* Transition */\n.transition-screen{\n    width: 100vw;\n    height: 100dvh;\n    background-color: #141414;\n    z-index: 0;\n}\n\n.transition-screen.show{\n    z-index: 6;\n}\n\n/* Header */\nheader{\n    display: flex;\n    flex-direction: column;\n    background-color: var(--main-light);\n    padding: 12px 30px;\n    justify-content: center;\n    align-items: center;\n    gap: 30px;\n    opacity: 1;\n    transition: opacity 2s ease;\n}\n\nheader.hidden{\n    opacity: 0;\n}\n\n.map{\n    opacity: 0;\n}\n\n[id^=\"cursive-\"] {  /* Selects all elements with IDs starting with \"cursive-\" */\n    stroke-dasharray: 100%; \n    stroke-dashoffset: 100%; \n    transition: stroke-dashoffset 1s ease-out;\n}\n\n[id^=\"cursive-\"].show {  /* Selects all elements with IDs starting with \"cursive-\" */\n    stroke-dashoffset: 0; \n}\n\n\n\n.animated-icon {\n    height: 200px;\n    position: fixed;  \n    top: 30%;\n    left: 50%;\n    transform: translateX(-50%);\n    margin: 0 auto;\n    transition: all 2s ease;\n}\n\n@media (max-width: 600px) {\n    .icon{\n        height: 200px;\n    }\n}\n\n.animated-icon.move{\n    top: 30vh;\n    height: 200px;\n}\n\n@media (max-width: 600px) {\n    .animated-icon{\n        max-width: 80vw;\n    }\n    .animated-icon.move{\n        max-width: 80vw;\n        top: 20vh;\n    }\n}\n\n.map{\n    opacity: 0;\n    transform: translateY(50px);\n    transition: opacity 2s ease, transform 1s ease;\n}\n\n.map.show{\n    opacity: 1;\n    transform: translateY(0);\n}\n\n#the-dance{\n    x: 95;\n    transition: x 2s ease;\n}\n#the-dance.show{\n    x: 35;\n}\n#separator{\n    opacity: 0;\n    transform: translateX(65px);\n    transition: transform 2s ease, opacity 2s ease;\n}\n\n#separator.show{\n    opacity: 1;\n    transform: translateX(0);\n}\n\n.letter {\n    opacity: 0;\n    transform-origin: 50% 50%;\n    transition: opacity 3s ease, transform 5s ease;\n}\n\n.letter.right{\n    transform: rotateY(90deg);\n}\n\n.letter.left{\n    transform: rotateY(270deg);\n}\n\n.letter.show.right{\n    opacity: 1;\n    transform: rotateY(0deg);\n}\n\n.letter.show.left{\n    opacity: 1;\n    transform: rotateY(360deg);\n}\n\n.slogan{\n    opacity: 0;\n    transition: opacity 1s ease-in;\n}\n\n.slogan.show{\n    opacity: 1;\n}\n\n\n\n\n\n\n\n\n.logo-container{\n    opacity: 1;\n}\n\n.logo{\n    max-height: 200px;\n    max-width: 80vw;\n    width: auto;\n    height: auto;\n}\n\n.menu{\n    display: flex;\n    gap: 30px;\n}\n\n.menu-tab{\n    border: none;\n    background-color: var(--main-color);\n    color: var(--text-light);\n    font-size: 16px;\n}\n\n/* Content\n.content{\n    flex: 1;\n} */\n\n/* Contact details */\n\n.contact-wrapper{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    background-color: var(--bg-light);\n    padding: 60px;\n    text-align: center;\n}\n\n.get-in-touch{\n    margin: 0 auto;\n    border-bottom: solid 1px var(--text-dark);\n}\n\n.contact-wrapper .phone{\n    position: relative;\n    background-color: none;\n    z-index: 1;\n    padding: 10px;\n    margin: 0 auto;\n}\n\n.contact-wrapper .phone::after{\n    content: '';\n    display: block;\n    height: 5px;\n    background-color: var(--bg-accent);\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 25%;\n    z-index: -1;\n}\n\n.contact-container{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-content: center;\n    padding: 60px;\n    background-color: white;\n    gap: 30px;\n}\n\n.contact{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n/* .contact-button{\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    align-items: center;\n    border: solid 1px var(--text-dark);\n    padding: 12px 36px;\n    margin: 0 auto;\n    i{\n        font-size: 36px;\n    }\n} */\n\n.business-hours{\n    display: flex;\n    flex-wrap: wrap;\n    column-gap: 30px;\n    row-gap: 10px;\n    justify-content: space-around;\n}\n\n.invitation{\n    font-size: smaller;\n    margin: 0;\n    margin-top: 5px;\n}\n\n/* Location */\n\n.location-container{\n    display: flex;\n    justify-content: space-between;\n    padding: 12px 30px;\n    background-color: var(--main-color);\n}\n\n.details-container{\n    color: var(--text-light);\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n\n.address, .phone{\n    margin-bottom: 0;\n}\n\n.g-map{\n    border: 0;\n    min-width: 300px;\n    height: 300px;\n}\n\na{\n    text-decoration: none;\n    color: inherit;\n    text-decoration: none;\n}\n\n/* custom cursor*/\n\n#custom-cursor {\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    background-color: #fff5ff;\n    position: absolute;\n    z-index: 10;\n    opacity: 0.75;\n    pointer-events: none;\n    /* transform: translate(-50%,-50%); */\n}\n\n#custom-cursor-shadow{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    background-color: none;\n    position: absolute;\n    z-index: 10;\n    opacity: 0.75;\n    pointer-events: none;\n    border: 1px solid #fff5ff;\n    transform: translate(-50%,-50%);\n}\n\n@media (max-width: 600px) {\n    #custom-cursor, #custom-cursor-shadow{\n        display: none;\n    }\n}\n\n\n.slideshow-container{\n    /* z-index: 6; */\n    position: absolute;\n    top: 20vh;\n    /* width: 100vw; */\n    width: 100%;\n    height: 70vh;\n    overflow: hidden;\n}\n\n@media (max-width: 600px) {\n    .slideshow-container{\n        /* top: 120px; */\n        height: 60vh;\n        width: 100%;\n    }\n}\n\n.slide-container{\n    height: 100%;\n    width: 60%;\n    position: absolute;\n    top: 45%;\n    left: 50%;\n    /* transform: translate(-50%,-50%); */\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* opacity: 1; */\n    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;\n}\n\n.slide-container:not(.active){\n    transform: translate(100%,-50%);\n    opacity: 0;\n}\n\n.slide-container{\n    transform: translate(-50%,-50%);\n    opacity: 1;\n}\n\n.slide-container.was-active:not(.active){\n    transform: translate(-200%,-50%);\n    opacity: 0;\n}\n\n@media (max-width: 600px) {\n    .slide-container{\n        width: 90%;\n    }\n}\n\n.card{\n    max-width: 100%;\n    max-height: 100%;\n    width: auto;\n    height: auto;\n    margin: auto;\n    border-radius: 15px;\n}\n\n/* Page content */\n\n.content{\n    width: 100vw;\n    height: 100dvh;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 6;\n    padding: 0 60px;\n    box-sizing: border-box;\n    display: grid;\n    grid-template-columns: calc(100vw-120px);\n    grid-template-rows: max-content;\n    gap: 40px;\n    justify-content: center;\n    overflow-y: auto;\n}\n\n.content:before{\n    content: \"\";\n    height: 30%;\n    width: 100%;\n    background: linear-gradient(to bottom, #141414 0%, #14141400 100%);\n    position: fixed;\n    top:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n.content:after{\n    content: \"\";\n    height: 30%;\n    width: 100%;\n    background: linear-gradient(to top, #141414 0%, #14141400 100%);\n    position: fixed;\n    bottom:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n@media (max-width: 600px) {\n    .content{\n        padding: 0 30px;\n    }\n\n    .content:before, .content:after{\n        height: 120px;\n    }\n}\n\n.mission{\n    max-width: 800px;\n    padding-top: 180px;\n    margin: 0 auto;\n    /* transform: translateY(180px); */\n\n    h1{\n        font-family: 'Intro';\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 120px 0;\n    }\n    p{\n        font-size: 24px;\n        line-height: 1.5;\n        color: #fff5ff;\n    }\n}\n\n@media (max-width: 600px) {\n    .mission{\n        padding-top: 120px;\n        text-align: center;\n        h1{\n            font-size: 36px;\n            margin: 60px 0;\n        }\n        p{\n            font-size: 18px;\n        }\n    }\n}\n\n.team-container{\n    width: 100%;\n    margin: 0 auto;\n    /* padding-bottom: 180px; */\n    /* transform: translateY(200px); */\n    h1{\n        font-family: 'Intro';\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 120px 0;\n    }\n}\n\n@media (max-width: 600px) {\n    .team-container{\n        text-align: center;\n        h1{\n            font-size: 36px;\n            margin: 60px 0;\n        }\n    }\n}\n\n.team{\n    display: flex;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    gap: 30px;\n}\n\n@media (max-width: 600px) {\n    .team{\n        justify-content: center;\n    }\n}\n\n.team-member{\n    width: 200px;\n}\n\n/* .member-picture-container{ */\n    /* position: relative; */\n/* } */\n\n.member-picture{\n    border-radius: 0 60px 60px 0;\n    overflow: hidden;\n}\n\n.member-picture.color{\n    /* transition: all 0.5s ease-in-out; */\n    transform-origin: center;\n    /* transform: scale(0); */\n    /* position: absolute; */\n    /* top: 0; */\n    /* left: 0; */\n    border-radius: 0 60px 60px 0;\n    /* border-radius: 50%; */\n    /* opacity: 0; */\n}\n\n.member-picture.color.show{\n    /* transform: scale(1); */\n    border-radius: 0 60px 60px 0;\n    opacity: 1;\n}\n\n.filter-pic{\n    width: 200px;\n    /* position: relative;\n    top: 0; */\n}\n\n.color-pic{\n    width: 200px;\n    /* position: relative; */\n    /* top: 0; */\n    /* border-radius: 0 60px 60px 0; */\n}\n\n.member-name{\n    font-weight: bold;\n    color: #fff5ff;\n}\n\n.member-role{\n    color: #b4d4ee;\n}\n\n.partners{\n\n    max-width: 800px;\n    padding-bottom: 180px;\n    margin: 0 auto;\n    /* transform: translateY(180px); */\n\n    h1{\n        font-family: 'Intro';\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 120px 0;\n    }\n    p{\n        font-size: 24px;\n        line-height: 1.5;\n        color: #fff5ff;\n    }\n    a{\n        font-family: 'Intro';\n        color: #b4d4ee;\n    }\n}\n\n@media (max-width: 600px) {\n    .partners{\n        text-align: center;\n        padding-bottom: 120px;\n        h1{\n            font-size: 36px;\n            margin: 60px 0;\n        }\n        p{\n            font-size: 18px;\n        }\n    }\n}\n\n/* Contact page */\n\n.contact-us{\n    padding: 180px 0;\n    display: grid;\n    grid-template-columns: max-content, max-content;\n    justify-content: center;\n    align-items: center;\n}\n\n@media (max-width: 600px) {\n    .contact-us{\n        padding: 120px 0;\n    }\n}\n\n.contact-us-title{\n    color: #ffa6db;\n    font-family: 'Intro', sans-serif;\n    margin: 60px 0;\n    font-size: 60px;\n    grid-column: 1/3;\n}\n\n@media (max-width: 600px) {\n    .contact-us-title{\n        margin-top: 0;\n        font-size: 36px;\n        text-align: center;\n    }\n}\n\n.contact-us-phrase{\n    color: #fff5ff;\n    max-width: 250px;\n    font-size: 24px;\n    line-height: 1.5;\n}\n\n@media (max-width: 600px) {\n    .contact-us-phrase{\n        font-size: 18px;\n        text-align: center;\n        grid-column: 1/3;\n        margin: 0 auto;\n    }\n}\n\n/* .contact-button-container{\n    position: relative;\n    padding: 20px 40px;\n} */\n\n.contact-button{\n    color: #b4d4ee;\n    font-family: 'Intro', sans-serif;\n    font-size: 10vw;\n    padding-top: 2vw;\n}\n\n@media (max-width: 600px) {\n    .contact-button{\n        font-size: 15vw;\n        text-align: center;\n        grid-column: 1/3;\n        padding-top: 80px;\n    }\n}\n\n/* .contact-button.active{\n    opacity: 1;\n} */\n\n/* .stripe{\n    color: #b4d4ee;\n    font-family: 'Intro', sans-serif;\n    font-size: 10vw;\n    padding: 0;\n    margin: 0;\n    position: absolute;\n    text-align: center;\n    width: 100%;\n    top: 0;\n    transition: all 1s ease-out;\n} */\n\n/* Teaser */\n\n.teaser-title{\n    max-width: 800px;\n    padding-top: 200px;\n    font-family: 'Intro';\n    font-size: 60px;\n    color:#ffa6db;\n    margin-bottom: 0;\n}\n\n@media (max-width: 600px) {\n    .teaser-title{\n        padding-top: 120px;\n        font-size: 36px;\n        margin-top: 0;\n        text-align: center;\n    }\n}\n\n.teaser{\n    max-width: 800px;\n    font-size: 24px;\n    line-height: 1.5;\n    color: #fff5ff;\n    a{\n        font-family: 'Intro';\n        color: #b4d4ee;\n    }\n    padding-bottom: 200px;\n}\n\n@media (max-width: 600px) {\n    .teaser{\n        font-size: 18px;\n        text-align: center;\n        padding-bottom: 120px;\n    }\n}\n\n.teaser-cta{\n    font-size: 24px;\n    line-height: 1.5;\n    color: #fff5ff;\n    a{\n        font-family: 'Intro';\n        color: #b4d4ee;\n    }\n}\n\n/*Footer*/\nfooter{\n    position: absolute;\n    bottom: -40px;\n    padding: 0 60px;\n    z-index: 9;\n    transform: translateY(-50px);\n    display: flex;\n    justify-content: space-between;\n    width: 100vw;\n    box-sizing: border-box;\n    font-size: 18px;\n    align-items: center;\n    color: #fff5ff;\n}\n\n@media (max-width: 600px) {\n    footer{\n        padding: 0 30px;\n    }\n}\n\n.sns-container{\n    display: flex;\n    gap: 20px;\n    justify-items: center;\n}\n\n/* footer{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    gap: 24px;\n    align-items: center;\n} */\n\n/* .sns-container{\n    display: flex;\n    justify-content: space-around;\n    font-size: 24px;\n} */\n\n.sns{\n    color: var(--main-color);\n    font-size: 20px;\n    /* border: solid 1px #fff5ff;\n    padding: 8px;\n    border-radius: 50%;\n    height: 20px;\n    width: 20px */\n}\n\nfooter.dark{\n    color: #141414;\n}\n\n"],"sourceRoot":""}]);
+
+/* Hub */
+
+.hub-container{
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    gap: 24px;
+}
+
+@media (max-width: 600px) {
+    .hub-container{
+        height: max-content;
+        flex-direction: column-reverse;
+
+    }
+}
+
+.hub-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #afa5af;
+    font-size: 18px;
+    font-family: 'Intro', 'Helvetica', sans-serif;
+    gap: 20px;
+    padding: 0 0 60px 0;
+    background-color: #141414;
+}
+
+.hub-menu div:hover{
+    cursor: pointer;
+}
+
+.hub-menu div.active{
+    color: #b4d4ee;
+    font-weight: bold;
+}
+
+.event-info-container{
+    height: 100dvh;
+    overflow: auto;
+}
+
+.event-info-container::-webkit-scrollbar{
+    display: none;
+}
+
+.event-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 180px 0;
+    /* height: 100dvh; */
+    overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+    .event-info-container{
+        height: max-content;
+    }
+    .event-info{
+        height: max-content;
+        margin: 0;
+        gap: 10px;
+        margin-bottom: 120px;
+    }
+}
+
+.slider{
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+    overflow: hidden;
+}
+.slides{
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+.slide{
+    width:100%;
+    height: 100%;
+    max-height: 60dvh;
+    display: flex;
+    flex-shrink: 0;
+    img{
+        max-width: 100%;
+        max-height: 60dvh;
+        width: auto;
+        height: auto;
+        margin: auto;
+        border-radius: 16px;
+        scroll-snap-align: center;
+    }
+}
+.slide-controls{
+    display: flex;
+    gap: 4px;
+    a{
+        background-color: #505050;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+    a.active{
+        background-color: #b4d4ee;
+    }
+}
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.slides::-webkit-scrollbar-thumb {
+    background: #505050;
+    border-radius: 10px;
+}
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.event-name{
+    color: #ffa6db;
+    font-family: 'Intro', Helvetica, sans-serif;
+    text-align: center;
+}
+.event-details{
+    color: #fff5ff;
+    font-size: 18px;
+}
+
+.ad-headline{
+    color: #b4d4ee;
+}
+
+@media (min-width: 600px){
+    .event-name{
+        font-size: 2.5em;
+    }
+    .ad-headline{
+        font-size: 2em;
+    }
+}
+
+.event-extra-info{
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.event-extra-info div{
+    display: flex;
+    gap: 8px;
+    color: #fff5ff;
+    align-items: center;
+}
+
+.hub-separator{
+    width: 4px;
+    background-color: #b4d4ee;
+    margin: 180px 0 80px 0;
+}
+
+@media (max-width: 600px){
+    .hub-separator{
+        height: 2px;
+        width: auto;
+        margin: 0;
+    } 
+}
+
+.schedule-wrapper{
+    height: 100dvh;
+    padding: 180px 0;
+    padding-left: 16px;
+    box-sizing: border-box;
+}
+
+.schedule-container{
+    height: 100%;
+    max-width: 400px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (max-width: 600px){
+    .schedule-wrapper{
+        padding: 0;
+        padding-top: 120px;
+        height: max-content;
+        overflow-x: auto;
+    }
+    .schedule-container{
+        height: 100%;
+        max-width: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3,100%);
+        justify-content: start;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    .schedule-item{
+        width: 100%;
+        flex-grow: 1;
+        scroll-snap-align: start;
+    }
+    .hub-menu{
+        padding-bottom: 16px;
+    }
+}
+
+.schedule-item h2{
+    color:#ffa6db;
+    font-family: 'Intro', 'Helvetica', sans-serif;
+}
+
+.schedule-grid{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in, border 0.3s ease-in;
+    box-sizing: border-box;
+    padding-bottom: 32px;
+}
+.schedule{
+    overflow: auto;
+    color:#fff5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 16px;
+}
+
+.schedule-grid.active{
+    grid-template-rows: 1fr;
+    border-bottom: solid 1px #ffa6db50;
+}
+
+@media (max-width: 600px){
+    .schedule-grid{
+        padding-bottom: 0;
+    }
+    .schedule-grid.active{
+        border-bottom: none;
+    }
+    .schedule{
+        max-height: 200px;
+    }
+}
+
+.schedule-container::-webkit-scrollbar{
+    display: none;
+}
+
+.event-item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px){
+    .event-item{
+        flex-wrap: nowrap;
+    }
+}
+
+.event-item .event-date{
+    text-align: center;
+    :first-child{
+        color: #b4d4ee;
+        font-weight: bold;
+    }
+}
+
+.event-thumb{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    img{
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        margin: auto;
+        border-radius: 4px;
+    }
+    flex-shrink: 0;
+}
+
+.event-summary{
+    text-align: left;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    p{
+        margin: 0;
+        width: 100%;
+    }
+}
+
+.ad-cta a{
+    font-family: 'Intro', 'Helvetica', sans-serif;
+    color: #b4d4ee;
+}
+`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":[":root{\n    --cursor-x: 0;\n    --cursor-y: 0;\n    --shadow-x: 0;\n    --shadow-y: 0;\n}\nbody{\n    margin: 0;\n    max-height: 100dvh;\n    max-width: 100vw;\n    font-family: Helvetica, sans-serif; /*'Audiowide';*/\n    /* letter-spacing: 0.005cm; */\n    display: flex;\n    flex-direction: column;\n    min-height: 100dvh;\n    color: var(--main-dark);\n    position: relative;\n}\n\n/* Preload */\n\n.preload{\n    background-color: none;\n    width: 100vw;\n    height: 100dvh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 2;\n}\n\n/* Home screen */\n\n.home-tabs{\n    height: 100dvh;\n    overflow: auto;\n    scroll-snap-type: y mandatory;\n    scroll-behavior: smooth;\n    -webkit-overflow-scrolling: touch; \n}\n\n.home-tabs::-webkit-scrollbar{\n    display: none;\n}\n\n.home-tab{\n    height: 100dvh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    scroll-snap-align: center;\n}\n\n.home-tab svg:hover{\n    cursor: pointer;\n}\n\n#events-tab-svg, #classes-tab-svg, #socials-tab-svg{\n    width: 90dvw;\n    max-width: 100%;\n}\n\n.home-screen{\n    overflow: hidden;\n    white-space: nowrap;\n    position: relative;\n}\n\n.carousel{\n    height: 100dvh;\n    /* width: 100vw; */\n    \n    display: inline-block;\n    background-color: #141414;\n    animation: 36s swipe infinite linear;\n}\n\n\n.frame{\n    height: 100dvh;\n}\n\n@keyframes swipe {\n    from { transform: translateX(0)}\n    to { transform: translateX(-100%) }\n}\n\n.frame source{\n    width: 100%;\n}\n\n.overlay{\n    position: absolute;\n    top: 0%;\n    left: 0%;\n    width: 100vw;\n    height: 100dvh;\n    /* background-color: rgba(20,20,20,0.5); */\n    background-image: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,1) 50vw, rgba(20,20,20,1) 70vw,rgba(20,20,20,1) 100%);\n    text-align: center;\n    color: #fff5ff;\n    display: flex;\n    flex-direction: column;\n    /* justify-content: center; */\n    align-items: center;\n    padding: 0 30px;\n    box-sizing: border-box;\n    gap: 30px;\n    transition: background-image 1s ease-in-out;\n}\n\n\n.overlay .logo-container{\n    opacity: 0;\n    img{\n        height: 200px;\n    }\n}\n\n.overlay .introduction, .overlay .get-started{\n    opacity: 0;\n    transition: opacity 1s ease-in-out, transform 0.3s ease-in-out;\n}\n\n.overlay.show{\n    background-image: linear-gradient(to right, rgba(20,20,20,1) 0%, rgba(20,20,20,0.5) 50vw, rgba(20,20,20,0.5) 70vw,rgba(20,20,20,1) 100%);\n    .introduction, .get-started, .logo-container{\n        opacity: 1;\n        z-index: 4;\n    }\n}\n\n.logo-container{\n    margin-top: 30vh;\n}\n\n@media (max-width: 600px){\n    .logo-container{\n        margin-top: 20vh;\n    }\n}\n\n.introduction{\n    width: 80vw;\n    white-space: wrap;\n}\n\n@media (max-width: 600px){\n    .introduction{\n        font-size: 24px;\n        /* margin-top: 10vh; */\n    }\n}\n\n.get-started{\n    border: none;\n    font-family: 'Intro', Helvetica, sans-serif;\n    font-size: 24px;\n    padding: 0 30px;\n    padding-top: 17px;\n    padding-bottom: 11px;\n    border-radius: 27px;\n    background-color: #ffa6db;\n    color:#fff5ff;\n    transform: scale(1);\n    /* box-shadow: 0px 0px 10px rgba(20,20,20,1); */\n}\n\n.get-started:hover{\n    cursor: pointer;\n    color: #cb56e6;\n    background-color: #fff5ff;\n    transform: scale(1.05);\n}\n\n/* Page content */\n\n.page{\n    width: 100vw;\n    height: 100dvh;\n    background-color: #141414;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 4;\n    opacity: 0;\n    transition: opacity 0.5s ease-in;\n    /* position: relative; */\n}\n\n.page.active{\n    opacity: 1;\n    z-index: 5;\n}\n\n.page .logo-container{\n    position: absolute;\n    top: 40px;\n    left: 60px;\n    transition: transform 0.5s ease-in-out;\n    transform: translateX(-100%);\n    margin: 0;\n    z-index: 9;\n}\n\n@media (max-width: 600px){\n    .page .logo-container{\n        top: 20px;\n        left: 30px;\n    }\n}\n\n.page .logo-container.show{\n    transform: translateX(0);\n}\n\n.page.active .buttons-container{\n    opacity: 1;\n    transform: translateX(0);\n}\n\n.main-logo, .aux-logo{\n    height: 60px;\n    opacity: 0;\n    transition: opacity 0.25s ease-in-out;\n}\n\n@media (max-width: 600px){\n    .main-logo, .aux-logo{\n        height: 40px;\n    }\n}\n\n.main-logo.show, .aux-logo.show{\n    opacity: 1;\n}\n\n.buttons-container{\n    overflow: hidden;\n    height: 24px;\n    position: absolute;\n    top: 60px;\n    right: 60px;\n    width: 70px;\n    transform: translateX(100%);\n    opacity: 0;\n    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;\n    z-index: 9;\n}\n\n@media (max-width: 600px) {\n    .buttons-container{\n        top: 30px;\n        right: 30px;\n    }\n}\n\n.buttons-container:hover{\n    cursor: pointer;\n}\n\n.buttons{\n    position: relative;\n    width: 100%;\n    display: flex;\n    justify-content: center;\n}\n\n.button{\n    position: absolute;\n    color: #fff5ff;\n    opacity: 0;\n    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;\n}\n\n.menu-button{\n    transform: translateY(-100%);\n}\n.close-button{\n    translate: translateY(100%);\n}\n\n.button.active{\n    transform: translateY(0);\n    opacity: 1;\n}\n\n#menu-button{\n    font-family: 'Intro', Helvetica, sans-serif;\n}\n\n#close-button{\n    color: #141414;\n    font-family: 'Intro', Helvetica, sans-serif;\n}\n\n/* Menu page */\n.menu-container{\n    height: 50px;\n    width: 100px;\n    border-radius: 25px;\n    position: absolute;\n    top: 42px;\n    right: 45px;\n    background-color: #ffa6db;\n    transform: scale(0);\n    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, top 0.3s ease-in-out, right 0.3s ease-in-out, border-radius 0.3s ease-in-out;\n    overflow: hidden;\n    z-index: 7;\n}\n\n.menu-container.highlight{\n    transform: scale(1);\n}\n\n.menu-container.show{\n    width: 100vw;\n    height: 100dvh;\n    border-radius: 0;\n    top: 0;\n    right: 0;\n    position: absolute;\n    /* animation: expandMenu 0.8s ease-in-out forwards; */\n}\n\n@media (max-width: 600px){\n    .menu-container{\n        top: 15px;\n        right: 15px;\n    }\n    .menu-container.show{\n        transform: scale(1);\n    }\n}\n\n/* .tab{\n    position: absolute;\n    font-size: 10vw;\n    margin: 0;\n    color: #fff5ff;\n} */\n.menu{\n    position: relative;\n    right: 25vw;\n    top: 0;\n    height: 100dvh;\n    display: flex;\n    flex-direction: column;\n}\n\n.menu-container .tab{\n    text-align: right;\n    position: absolute;\n    font-weight: 900;\n    font-family: 'Intro', Helvetica, sans-serif;\n    right: 25vw;\n    font-size: 10vw;\n    margin: 0;\n    color: #141414;\n    /* opacity: 0; */\n    /* transform: translate(-100%,0); */\n    transition: transform 0.7s ease-in-out, opacity 1s ease-in-out;\n}\n\n.menu-container .tab:hover{\n    cursor: pointer;\n    color: #fff5ff;\n}\n\n@media (max-width: 600px) {\n    .menu-container .menu{\n        right: 10vw;\n        top: 20vh;\n        height: 60vh;\n    }\n    .menu-container .tab{\n        font-size: 48px;\n        right: 15vw;\n    }\n}\n\n/* .menu-container .tab.show{\n    transform: translate(0,0);\n    opacity: 1;\n} */\n\n.menu-container:before{\n    content: \"\";\n    height: 20%;\n    width: 100%;\n    background: linear-gradient(to bottom, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);\n    position: absolute;\n    top:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n.menu-container:after{\n    content: \"\";\n    height: 20%;\n    width: 100%;\n    background: linear-gradient(to top, #ffa6db 0%, #ffa6db 120px, #ffa6db00 100%);\n    position: absolute;\n    bottom:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n@media (max-width: 600px) {\n    .menu-container:before{\n        background:  linear-gradient(to bottom, #ffa6db 0%, #ffa6db 80px, #ffa6db00 100%);\n    }\n    .menu-container:after{\n        background:  linear-gradient(to top, #ffa6db 0%, #ffa6db 80px, #ffa6db00 100%);\n    }\n}\n\n\n.main-logo.show, .aux-logo.show{\n    opacity: 1;\n}\n\n/* Transition */\n.transition-screen{\n    width: 100vw;\n    height: 100dvh;\n    background-color: #141414;\n    z-index: 0;\n}\n\n.transition-screen.show{\n    z-index: 6;\n}\n\n/* Header */\nheader{\n    display: flex;\n    flex-direction: column;\n    background-color: var(--main-light);\n    padding: 12px 30px;\n    justify-content: center;\n    align-items: center;\n    gap: 30px;\n    opacity: 1;\n    transition: opacity 2s ease;\n}\n\nheader.hidden{\n    opacity: 0;\n}\n\n.map{\n    opacity: 0;\n}\n\n[id^=\"cursive-\"] {  /* Selects all elements with IDs starting with \"cursive-\" */\n    stroke-dasharray: 100%; \n    stroke-dashoffset: 100%; \n    transition: stroke-dashoffset 1s ease-out;\n}\n\n[id^=\"cursive-\"].show {  /* Selects all elements with IDs starting with \"cursive-\" */\n    stroke-dashoffset: 0; \n}\n\n\n\n.animated-icon {\n    height: 200px;\n    position: fixed;  \n    top: 30%;\n    left: 50%;\n    transform: translateX(-50%);\n    margin: 0 auto;\n    transition: all 2s ease;\n}\n\n@media (max-width: 600px) {\n    .icon{\n        height: 200px;\n    }\n}\n\n.animated-icon.move{\n    top: 30vh;\n    height: 200px;\n}\n\n@media (max-width: 600px) {\n    .animated-icon{\n        max-width: 80vw;\n    }\n    .animated-icon.move{\n        max-width: 80vw;\n        top: 20vh;\n    }\n}\n\n.map{\n    opacity: 0;\n    transform: translateY(50px);\n    transition: opacity 2s ease, transform 1s ease;\n}\n\n.map.show{\n    opacity: 1;\n    transform: translateY(0);\n}\n\n#the-dance{\n    x: 95;\n    transition: x 2s ease;\n}\n#the-dance.show{\n    x: 35;\n}\n#separator{\n    opacity: 0;\n    transform: translateX(65px);\n    transition: transform 2s ease, opacity 2s ease;\n}\n\n#separator.show{\n    opacity: 1;\n    transform: translateX(0);\n}\n\n.letter {\n    opacity: 0;\n    transform-origin: 50% 50%;\n    transition: opacity 3s ease, transform 5s ease;\n}\n\n.letter.right{\n    transform: rotateY(90deg);\n}\n\n.letter.left{\n    transform: rotateY(270deg);\n}\n\n.letter.show.right{\n    opacity: 1;\n    transform: rotateY(0deg);\n}\n\n.letter.show.left{\n    opacity: 1;\n    transform: rotateY(360deg);\n}\n\n.slogan{\n    opacity: 0;\n    transition: opacity 1s ease-in;\n}\n\n.slogan.show{\n    opacity: 1;\n}\n\n\n\n\n\n\n\n\n.logo-container{\n    opacity: 1;\n}\n\n.logo{\n    max-height: 200px;\n    max-width: 80vw;\n    width: auto;\n    height: auto;\n}\n\n.menu{\n    display: flex;\n    gap: 30px;\n}\n\n.menu-tab{\n    border: none;\n    background-color: var(--main-color);\n    color: var(--text-light);\n    font-size: 16px;\n}\n\n/* Content\n.content{\n    flex: 1;\n} */\n\n/* Contact details */\n\n.contact-wrapper{\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    background-color: var(--bg-light);\n    padding: 60px;\n    text-align: center;\n}\n\n.get-in-touch{\n    margin: 0 auto;\n    border-bottom: solid 1px var(--text-dark);\n}\n\n.contact-wrapper .phone{\n    position: relative;\n    background-color: none;\n    z-index: 1;\n    padding: 10px;\n    margin: 0 auto;\n}\n\n.contact-wrapper .phone::after{\n    content: '';\n    display: block;\n    height: 5px;\n    background-color: var(--bg-accent);\n    width: 100%;\n    position: absolute;\n    left: 0;\n    bottom: 25%;\n    z-index: -1;\n}\n\n.contact-container{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-content: center;\n    padding: 60px;\n    background-color: white;\n    gap: 30px;\n}\n\n.contact{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n}\n\n/* .contact-button{\n    display: flex;\n    gap: 10px;\n    justify-content: center;\n    align-items: center;\n    border: solid 1px var(--text-dark);\n    padding: 12px 36px;\n    margin: 0 auto;\n    i{\n        font-size: 36px;\n    }\n} */\n\n.business-hours{\n    display: flex;\n    flex-wrap: wrap;\n    column-gap: 30px;\n    row-gap: 10px;\n    justify-content: space-around;\n}\n\n.invitation{\n    font-size: smaller;\n    margin: 0;\n    margin-top: 5px;\n}\n\n/* Location */\n\n.location-container{\n    display: flex;\n    justify-content: space-between;\n    padding: 12px 30px;\n    background-color: var(--main-color);\n}\n\n.details-container{\n    color: var(--text-light);\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n}\n\n.address, .phone{\n    margin-bottom: 0;\n}\n\n.g-map{\n    border: 0;\n    min-width: 300px;\n    height: 300px;\n}\n\na{\n    text-decoration: none;\n    color: inherit;\n    text-decoration: none;\n}\n\n/* custom cursor*/\n\n#custom-cursor {\n    width: 6px;\n    height: 6px;\n    border-radius: 50%;\n    background-color: #fff5ff;\n    position: absolute;\n    z-index: 10;\n    opacity: 0.75;\n    pointer-events: none;\n    /* transform: translate(-50%,-50%); */\n}\n\n#custom-cursor-shadow{\n    width: 40px;\n    height: 40px;\n    border-radius: 50%;\n    background-color: none;\n    position: absolute;\n    z-index: 10;\n    opacity: 0.75;\n    pointer-events: none;\n    border: 1px solid #fff5ff;\n    transform: translate(-50%,-50%);\n}\n\n@media (max-width: 600px) {\n    #custom-cursor, #custom-cursor-shadow{\n        display: none;\n    }\n}\n\n\n.slideshow-container{\n    /* z-index: 6; */\n    position: absolute;\n    top: 20vh;\n    /* width: 100vw; */\n    width: 100%;\n    height: 70vh;\n    overflow: hidden;\n}\n\n@media (max-width: 600px) {\n    .slideshow-container{\n        /* top: 120px; */\n        height: 60vh;\n        width: 100%;\n    }\n}\n\n.card-container{\n    height: 100%;\n    width: 60%;\n    position: absolute;\n    top: 45%;\n    left: 50%;\n    /* transform: translate(-50%,-50%); */\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    /* opacity: 1; */\n    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;\n}\n\n.card-container:not(.active){\n    transform: translate(100%,-50%);\n    opacity: 0;\n}\n\n.card-container{\n    transform: translate(-50%,-50%);\n    opacity: 1;\n}\n\n.card-container.was-active:not(.active){\n    transform: translate(-200%,-50%);\n    opacity: 0;\n}\n\n@media (max-width: 600px) {\n    .card-container{\n        width: 90%;\n    }\n}\n\n.card{\n    max-width: 100%;\n    max-height: 100%;\n    width: auto;\n    height: auto;\n    margin: auto;\n    border-radius: 15px;\n}\n\n/* Page content */\n\n.content{\n    width: 100vw;\n    height: 100dvh;\n    position: absolute;\n    top: 0;\n    left: 0;\n    z-index: 6;\n    padding: 0 60px;\n    box-sizing: border-box;\n    display: grid;\n    grid-template-columns: calc(100vw-120px);\n    grid-template-rows: max-content;\n    gap: 40px;\n    justify-content: center;\n    overflow-y: auto;\n}\n\n.content:before{\n    content: \"\";\n    height: 20%;\n    width: 100%;\n    background: linear-gradient(to bottom, #141414 0%, #14141400 100%);\n    position: fixed;\n    top:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n.content:after{\n    content: \"\";\n    height: 20%;\n    width: 100%;\n    background: linear-gradient(to top, #141414 0%, #14141400 100%);\n    position: fixed;\n    bottom:0;\n    left:0;\n    z-index: 8;\n    pointer-events: none;\n}\n\n@media (max-width: 600px) {\n    .content{\n        padding: 0 30px;\n    }\n\n    .content:before, .content:after{\n        height: 120px;\n    }\n}\n\n.mission{\n    max-width: 800px;\n    padding-top: 120px;\n    margin: 0 auto;\n    /* transform: translateY(180px); */\n\n    h1{\n        font-family: 'Intro', Helvetica, sans-serif;\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 60px 0;\n    }\n    p{\n        font-size: 24px;\n        line-height: 1.5;\n        color: #fff5ff;\n    }\n}\n\n@media (max-width: 600px) {\n    .mission{\n        padding-top: 60px;\n        \n        h1{\n            font-size: 36px;\n            margin: 60px 0;\n            text-align: center;\n        }\n        p{\n            font-size: 18px;\n        }\n    }\n}\n\n.team-container{\n    width: 100%;\n    margin: 0 auto;\n    h1{\n        font-family: 'Intro', Helvetica, sans-serif;\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 120px 0;\n    }\n}\n\n@media (max-width: 600px) {\n    .team-container{\n        text-align: center;\n        h1{\n            font-size: 36px;\n            margin: 60px 0;\n        }\n    }\n}\n\n.team{\n    display: flex;\n    justify-content: space-between;\n    flex-wrap: wrap;\n    gap: 30px;\n}\n\n@media (max-width: 600px) {\n    .team{\n        justify-content: center;\n    }\n}\n\n.team-member{\n    width: 200px;\n}\n\n.member-picture{\n    border-radius: 0 60px 60px 0;\n    overflow: hidden;\n}\n\n.member-picture.color{\n    transform-origin: center;\n    border-radius: 0 60px 60px 0;\n}\n\n.member-picture.color.show{\n    border-radius: 0 60px 60px 0;\n    opacity: 1;\n}\n\n.filter-pic{\n    width: 200px;\n}\n\n.color-pic{\n    width: 200px;\n}\n\n.member-name{\n    font-weight: bold;\n    color: #fff5ff;\n}\n\n.member-role{\n    color: #b4d4ee;\n}\n\n.partners{\n\n    max-width: 800px;\n    padding-bottom: 120px;\n    margin: 0 auto;\n\n    h1{\n        font-family: 'Intro', Helvetica, sans-serif;\n        font-size: 60px;\n        color:#ffa6db;\n        margin: 120px 0;\n    }\n    p{\n        font-size: 24px;\n        line-height: 1.5;\n        color: #fff5ff;\n    }\n    a{\n        font-family: 'Intro', Helvetica, sans-serif;\n        color: #b4d4ee;\n    }\n}\n\n@media (max-width: 600px) {\n    .partners{\n        padding-bottom: 120px;\n        h1{\n            text-align: center;\n            font-size: 36px;\n            margin: 60px 0;\n        }\n        p{\n            font-size: 18px;\n        }\n    }\n}\n\n/* Contact page */\n\n.contact-us{\n    padding: 180px 0;\n    display: grid;\n    grid-template-columns: max-content, max-content;\n    justify-content: center;\n    align-items: center;\n}\n\n@media (max-width: 600px) {\n    .contact-us{\n        padding: 120px 0;\n    }\n}\n\n.contact-us-title{\n    color: #ffa6db;\n    font-family: 'Intro', sans-serif, Helvetica, sans-serif;\n    margin: 60px 0;\n    font-size: 60px;\n    grid-column: 1/3;\n}\n\n@media (max-width: 600px) {\n    .contact-us-title{\n        margin-top: 0;\n        font-size: 36px;\n        text-align: center;\n    }\n}\n\n.contact-us-phrase{\n    color: #fff5ff;\n    max-width: 250px;\n    font-size: 24px;\n    line-height: 1.5;\n}\n\n@media (max-width: 600px) {\n    .contact-us-phrase{\n        font-size: 18px;\n        text-align: center;\n        grid-column: 1/3;\n        margin: 0 auto;\n    }\n}\n\n.contact-button{\n    color: #b4d4ee;\n    font-family: 'Intro', Helvetica, sans-serif;\n    font-size: 10vw;\n    padding-top: 2vw;\n}\n\n@media (max-width: 600px) {\n    .contact-button{\n        font-size: 15vw;\n        text-align: center;\n        grid-column: 1/3;\n        padding-top: 80px;\n    }\n}\n\n/* Teaser */\n\n.teaser-title{\n    max-width: 800px;\n    padding-top: 200px;\n    font-family: 'Intro', Helvetica, sans-serif;\n    font-size: 60px;\n    color:#ffa6db;\n    margin-bottom: 0;\n}\n\n@media (max-width: 600px) {\n    .teaser-title{\n        padding-top: 120px;\n        font-size: 36px;\n        margin-top: 0;\n        text-align: center;\n    }\n}\n\n.teaser{\n    max-width: 800px;\n    font-size: 24px;\n    line-height: 1.5;\n    color: #fff5ff;\n    a{\n        font-family: 'Intro', Helvetica, sans-serif;\n        color: #b4d4ee;\n    }\n    padding-bottom: 200px;\n}\n\n@media (max-width: 600px) {\n    .teaser{\n        font-size: 18px;\n        text-align: center;\n        padding-bottom: 120px;\n    }\n}\n\n.teaser-cta{\n    font-size: 24px;\n    line-height: 1.5;\n    color: #fff5ff;\n    a{\n        font-family: 'Intro', Helvetica, sans-serif;\n        color: #b4d4ee;\n    }\n}\n\n/*Footer*/\nfooter{\n    position: absolute;\n    bottom: -40px;\n    padding: 0 60px;\n    z-index: 9;\n    transform: translateY(-50px);\n    display: flex;\n    justify-content: space-between;\n    width: 100vw;\n    box-sizing: border-box;\n    font-size: 18px;\n    align-items: center;\n    color: #fff5ff;\n}\n\n@media (max-width: 600px) {\n    footer{\n        padding: 0 30px;\n    }\n}\n\n.sns-container{\n    display: flex;\n    gap: 20px;\n    justify-items: center;\n}\n\n.sns{\n    color: var(--main-color);\n    font-size: 20px;\n}\n\nfooter.dark{\n    color: #141414;\n}\n\n\n/* Hub */\n\n.hub-container{\n    width: 100%;\n    height: 100dvh;\n    display: flex;\n    gap: 24px;\n}\n\n@media (max-width: 600px) {\n    .hub-container{\n        height: max-content;\n        flex-direction: column-reverse;\n\n    }\n}\n\n.hub-menu{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    color: #afa5af;\n    font-size: 18px;\n    font-family: 'Intro', 'Helvetica', sans-serif;\n    gap: 20px;\n    padding: 0 0 60px 0;\n    background-color: #141414;\n}\n\n.hub-menu div:hover{\n    cursor: pointer;\n}\n\n.hub-menu div.active{\n    color: #b4d4ee;\n    font-weight: bold;\n}\n\n.event-info-container{\n    height: 100dvh;\n    overflow: auto;\n}\n\n.event-info-container::-webkit-scrollbar{\n    display: none;\n}\n\n.event-info{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 30px;\n    margin: 180px 0;\n    /* height: 100dvh; */\n    overflow-y: auto;\n}\n\n@media (max-width: 600px) {\n    .event-info-container{\n        height: max-content;\n    }\n    .event-info{\n        height: max-content;\n        margin: 0;\n        gap: 10px;\n        margin-bottom: 120px;\n    }\n}\n\n.slider{\n    max-width: 600px;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 8px;\n    gap: 8px;\n    overflow: hidden;\n}\n.slides{\n    width: 100%;\n    /* height: 100%; */\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    overflow-x: auto;\n    scroll-snap-type: x mandatory;\n    scroll-behavior: smooth;\n    -webkit-overflow-scrolling: touch;\n}\n.slide{\n    width:100%;\n    height: 100%;\n    max-height: 60dvh;\n    display: flex;\n    flex-shrink: 0;\n    img{\n        max-width: 100%;\n        max-height: 60dvh;\n        width: auto;\n        height: auto;\n        margin: auto;\n        border-radius: 16px;\n        scroll-snap-align: center;\n    }\n}\n.slide-controls{\n    display: flex;\n    gap: 4px;\n    a{\n        background-color: #505050;\n        width: 12px;\n        height: 12px;\n        border-radius: 50%;\n    }\n    a.active{\n        background-color: #b4d4ee;\n    }\n}\n.slides::-webkit-scrollbar {\n    width: 10px;\n    height: 10px;\n}\n.slides::-webkit-scrollbar-thumb {\n    background: #505050;\n    border-radius: 10px;\n}\n.slides::-webkit-scrollbar-track {\n    background: transparent;\n}\n\n.event-name{\n    color: #ffa6db;\n    font-family: 'Intro', Helvetica, sans-serif;\n    text-align: center;\n}\n.event-details{\n    color: #fff5ff;\n    font-size: 18px;\n}\n\n.ad-headline{\n    color: #b4d4ee;\n}\n\n@media (min-width: 600px){\n    .event-name{\n        font-size: 2.5em;\n    }\n    .ad-headline{\n        font-size: 2em;\n    }\n}\n\n.event-extra-info{\n    max-width: 500px;\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    flex-wrap: wrap;\n}\n\n.event-extra-info div{\n    display: flex;\n    gap: 8px;\n    color: #fff5ff;\n    align-items: center;\n}\n\n.hub-separator{\n    width: 4px;\n    background-color: #b4d4ee;\n    margin: 180px 0 80px 0;\n}\n\n@media (max-width: 600px){\n    .hub-separator{\n        height: 2px;\n        width: auto;\n        margin: 0;\n    } \n}\n\n.schedule-wrapper{\n    height: 100dvh;\n    padding: 180px 0;\n    padding-left: 16px;\n    box-sizing: border-box;\n}\n\n.schedule-container{\n    height: 100%;\n    max-width: 400px;\n    overflow: auto;\n    display: flex;\n    flex-direction: column;\n    gap: 12px;\n}\n\n@media (max-width: 600px){\n    .schedule-wrapper{\n        padding: 0;\n        padding-top: 120px;\n        height: max-content;\n        overflow-x: auto;\n    }\n    .schedule-container{\n        height: 100%;\n        max-width: 100%;\n        width: 100%;\n        display: grid;\n        grid-template-columns: repeat(3,100%);\n        justify-content: start;\n        scroll-snap-type: x mandatory;\n        scroll-behavior: smooth;\n        -webkit-overflow-scrolling: touch;\n    }\n    .schedule-item{\n        width: 100%;\n        flex-grow: 1;\n        scroll-snap-align: start;\n    }\n    .hub-menu{\n        padding-bottom: 16px;\n    }\n}\n\n.schedule-item h2{\n    color:#ffa6db;\n    font-family: 'Intro', 'Helvetica', sans-serif;\n}\n\n.schedule-grid{\n    display: grid;\n    grid-template-rows: 0fr;\n    transition: grid-template-rows 0.3s ease-in, border 0.3s ease-in;\n    box-sizing: border-box;\n    padding-bottom: 32px;\n}\n.schedule{\n    overflow: auto;\n    color:#fff5ff;\n    display: flex;\n    flex-direction: column;\n    gap: 16px;\n    padding-left: 16px;\n}\n\n.schedule-grid.active{\n    grid-template-rows: 1fr;\n    border-bottom: solid 1px #ffa6db50;\n}\n\n@media (max-width: 600px){\n    .schedule-grid{\n        padding-bottom: 0;\n    }\n    .schedule-grid.active{\n        border-bottom: none;\n    }\n    .schedule{\n        max-height: 200px;\n    }\n}\n\n.schedule-container::-webkit-scrollbar{\n    display: none;\n}\n\n.event-item{\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    flex-wrap: wrap;\n}\n\n@media (max-width: 600px){\n    .event-item{\n        flex-wrap: nowrap;\n    }\n}\n\n.event-item .event-date{\n    text-align: center;\n    :first-child{\n        color: #b4d4ee;\n        font-weight: bold;\n    }\n}\n\n.event-thumb{\n    width: 60px;\n    height: 60px;\n    overflow: hidden;\n    display: flex;\n    img{\n        max-width: 100%;\n        max-height: 100%;\n        width: auto;\n        height: auto;\n        margin: auto;\n        border-radius: 4px;\n    }\n    flex-shrink: 0;\n}\n\n.event-summary{\n    text-align: left;\n    margin: 0;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n    p{\n        margin: 0;\n        width: 100%;\n    }\n}\n\n.ad-cta a{\n    font-family: 'Intro', 'Helvetica', sans-serif;\n    color: #b4d4ee;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23759,6 +24028,303 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./src/components/event-info.js":
+/*!**************************************!*\
+  !*** ./src/components/event-info.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EventInfo: () => (/* binding */ EventInfo)
+/* harmony export */ });
+/* harmony import */ var _slideshow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slideshow */ "./src/components/slideshow.js");
+
+
+function EventInfo(danceEvent){
+    this.danceEvent = danceEvent;
+
+    this.createEventInfo = function(){
+
+        const infoContainer = document.createElement('div');
+        infoContainer.classList.add('event-info');
+        
+        //Event name
+        const name = document.createElement('h1');
+        name.classList.add('event-name');
+        name.textContent = this.danceEvent.details.name;
+        infoContainer.appendChild(name);
+        //Event media, flyer, photos, etc.
+        const sliderConstructor = new _slideshow__WEBPACK_IMPORTED_MODULE_0__.Slider(this.danceEvent.slides);
+        const slider = sliderConstructor.createSlider();
+        infoContainer.appendChild(slider);
+
+        
+        //Highlight slide in view
+        const indicators = slider.querySelectorAll('.slide-controls a');
+        const observerOptions = {
+            root: slider.querySelector('.slides'),
+            threshold: 0.5
+        };
+
+        indicators.forEach(indicator => {
+            const targetSlide = slider.querySelector(indicator.getAttribute('href'));
+
+            const observer = new IntersectionObserver((entries)=>{
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        indicator.classList.add('active');
+                    }else{
+                        indicator.classList.remove('active');
+                    }
+                });
+            }, observerOptions);
+            observer.observe(targetSlide);
+        });
+
+        //Event information
+        infoContainer.appendChild(this.createInfoPanel(this.danceEvent.details));
+
+        return infoContainer;
+    }
+
+    this.createInfoPanel = function(details){
+
+        const panel = document.createElement('div');
+        panel.classList.add('event-details');
+        
+        const datesContainer = document.createElement('div');
+        const datesIcon = document.createElement('i');
+        datesIcon.classList.add('fa-regular', 'fa-calendar');
+        const dates = document.createElement('p');
+        dates.textContent = details.dates;
+        if(details.dates){
+            datesContainer.appendChild(datesIcon);   
+        }
+        datesContainer.appendChild(dates);
+
+        const venueContainer = document.createElement('div');
+        const venueIcon = document.createElement('i');
+        venueIcon.classList.add('fa-regular', 'fa-map');
+        const venue = document.createElement('a');
+        if(details.venue.url){
+            venue.href = details.venue.url;
+            venue.target = "_blank";
+            venue.rel = "noopener noreferrer";
+        }
+        venue.textContent = details.venue.name;
+        if(details.venue.name){
+            venueContainer.appendChild(venueIcon);
+        }
+        venueContainer.appendChild(venue);
+
+        const description = document.createElement('div');
+        description.innerHTML = details.description;
+        panel.appendChild(description);
+
+        const extraInfo = document.createElement('div');
+        extraInfo.classList.add('event-extra-info');
+        // panel.appendChild(name);
+        extraInfo.appendChild(datesContainer);
+        extraInfo.appendChild(venueContainer);
+        //Event links
+        extraInfo.appendChild(this.createLinks(this.danceEvent.links));
+        panel.appendChild(extraInfo);
+
+        return panel;
+    }
+
+    this.createLinks = function(links){
+        
+        const linksContainer = document.createElement('div');
+        linksContainer.classList.add('event-links');
+            
+        for(let link of links){
+            linksContainer.appendChild(this.createLinkIcon(link));
+        }
+
+        return linksContainer;
+    }
+
+    this.createLinkIcon = function(link){
+        //Icon FontAwesome
+        const icon = document.createElement('i');
+        icon.classList.add(...link.faClass.split(' ')); //allow multiple classes from Font Awesome
+        //Accessibility
+        icon.setAttribute('aria-label', link.name);
+        
+        if(link.url){
+            const anchor = document.createElement('a');
+            anchor.classList.add('event-link');
+            anchor.href = link.url;
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.appendChild(icon);
+            return anchor;
+        }else{
+            return icon;
+        }
+    }
+
+}
+
+
+
+/***/ }),
+
+/***/ "./src/components/event-schedule.js":
+/*!******************************************!*\
+  !*** ./src/components/event-schedule.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EventSchedule: () => (/* binding */ EventSchedule)
+/* harmony export */ });
+/* harmony import */ var _images_the_dance_thread_logo_dark_2_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! .././images/the-dance-thread-logo-dark-2.svg */ "./src/images/the-dance-thread-logo-dark-2.svg");
+
+function EventSchedule(danceEvents) {
+    this.danceEvents = danceEvents;
+
+    this.createSchedule = function () {
+        const scheduleContainer = document.createElement('div');
+        scheduleContainer.classList.add('schedule-container');
+
+        // //Menu
+        // const hubMenu = document.createElement('div');
+        // hubMenu.classList.add('hub-menu');
+        // const hubItems = ['Events', 'Socials', 'Classes'];
+        // hubItems.forEach(item =>{
+        //     const hubItem = document.createElement('div')
+        //     hubItem.textContent = item;
+        //     hubMenu.appendChild(hubItem);
+        // });
+        // scheduleContainer.appendChild(hubMenu);
+
+        // Create schedule items for each dance style (Latin, Hip-Hop, Heels)
+        const styles = ['Latin', 'Hip-Hop', 'Heels'];
+        styles.forEach(style => {
+            const scheduleItem = this.createScheduleItem(style);
+            scheduleContainer.appendChild(scheduleItem);
+        });
+
+        return scheduleContainer;
+    };
+
+    this.createScheduleItem = function (style) {
+        const scheduleItem = document.createElement('div');
+        scheduleItem.classList.add('schedule-item');
+
+        const heading = document.createElement('h2');
+        heading.textContent = style;
+        scheduleItem.appendChild(heading);
+
+        const scheduleGrid = document.createElement('div');
+        scheduleGrid.classList.add('schedule-grid');
+        const schedule = document.createElement('div');
+        schedule.classList.add('schedule');
+        scheduleGrid.appendChild(schedule)
+        scheduleItem.appendChild(scheduleGrid);
+
+        // Filter events by style and create event items
+        const filteredEvents = this.danceEvents.filter(event => event.style === style);
+        filteredEvents.forEach(event => {
+            //Find the index of the event in the unfiltered array
+            const eventIndex = this.danceEvents.findIndex(e => e === event);
+            const eventItem = this.createEventItem(event,eventIndex);
+            schedule.appendChild(eventItem);
+        });
+
+        if (filteredEvents.length === 0) {
+            schedule.appendChild(this.createPlaceholderEventItem());
+        }
+
+        return scheduleItem;
+    };
+
+    this.createEventItem = function (danceEvent,index) {
+        const eventItem = document.createElement('div');
+        eventItem.classList.add('event-item');
+        eventItem.dataset.eventIndex = index;
+
+        const eventDate = document.createElement('div');
+        eventDate.classList.add('event-date');
+
+        const month = document.createElement('p');
+        month.textContent = danceEvent.details.dates.split(' ')[1].toUpperCase().slice(0, 3); 
+        eventDate.appendChild(month);
+
+        const day = document.createElement('p');
+        day.textContent = danceEvent.details.dates.split(' ')[2]; 
+        eventDate.appendChild(day);
+
+        eventItem.appendChild(eventDate);
+
+        // Add event thumbnail (first slide)
+        const eventThumb = document.createElement('div');
+        eventThumb.classList.add('event-thumb');
+        const img = document.createElement('img');
+        img.src = danceEvent.slides[0].src; 
+        img.alt = danceEvent.details.name; 
+        eventThumb.appendChild(img);
+        eventItem.appendChild(eventThumb);
+
+        const eventInfo = document.createElement('div');
+        eventInfo.classList.add('event-summary');
+
+        const eventName = document.createElement('p');
+        eventName.textContent = danceEvent.details.name; 
+        eventInfo.appendChild(eventName);
+
+        const eventVenue = document.createElement('p');
+        eventVenue.textContent = danceEvent.details.venue.name; 
+        eventInfo.appendChild(eventVenue);
+
+        eventItem.appendChild(eventInfo);
+
+        return eventItem;
+    };
+
+    this.createPlaceholderEventItem = function () {
+        const eventItem = document.createElement('div');
+        eventItem.classList.add('event-item');
+        eventItem.dataset.eventIndex = -1;
+
+        const eventDate = document.createElement('div');
+        eventDate.classList.add('event-date');
+        eventDate.innerHTML = `
+            <p>MON</p>
+            <p>00</p>
+        `; // Set the date to "MON 00"
+        eventItem.appendChild(eventDate);
+
+        const eventThumb = document.createElement('div');
+        eventThumb.classList.add('event-thumb');
+        const img = document.createElement('img');
+        img.src = _images_the_dance_thread_logo_dark_2_svg__WEBPACK_IMPORTED_MODULE_0__; // Replace with the actual path to your placeholder image
+        img.alt = 'Coming Soon';
+        eventThumb.appendChild(img);
+        eventItem.appendChild(eventThumb);
+
+        const eventInfo = document.createElement('div');
+        eventInfo.classList.add('event-summary');
+        eventInfo.innerHTML = `
+            <p>Coming soon</p>
+            <p></p>
+        `; // Set the event name and venue to empty paragraphs
+        eventItem.appendChild(eventInfo);
+
+        return eventItem;
+    };
+}
+
+
+
+/***/ }),
+
 /***/ "./src/components/footer.js":
 /*!**********************************!*\
   !*** ./src/components/footer.js ***!
@@ -24248,41 +24814,88 @@ function Icon(iconSrc, className = 'icon'){
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Slider: () => (/* binding */ Slider),
 /* harmony export */   Slideshow: () => (/* binding */ Slideshow)
 /* harmony export */ });
-function Slideshow(slides){
+function Slideshow(cards){
     
-    this.slides = slides;
+    this.cards = cards;
 
     this.createSlideshow = function(){
 
         const slideshow = document.createElement('div');
         slideshow.classList.add('slideshow-container');
 
-        for(let slide of this.slides){
-            const slideContainer = document.createElement('div');
-            slideContainer.classList.add('slide-container');
-            slideContainer.appendChild(this.createSlide(slide));
-            slideshow.appendChild(slideContainer);
+        for(let card of this.cards){
+            const cardContainer = document.createElement('div');
+            cardContainer.classList.add('card-container');
+            cardContainer.appendChild(this.createCard(card));
+            slideshow.appendChild(cardContainer);
         }
 
-        const activeSlide = slideshow.querySelector(':first-child');
-        activeSlide.classList.add('active');
+        const activeCard = slideshow.querySelector(':first-child');
+        activeCard.classList.add('active');
 
         return slideshow
 
     }
 
-    this.createSlide =  function(slide){
-        const Slide = document.createElement('img');
-        Slide.classList.add('card');
-        Slide.src = slide.src;
-        Slide.alt = slide.name;
+    this.createCard =  function(card){
+        const Card = document.createElement('img');
+        Card.classList.add('card');
+        Card.src = card.src;
+        Card.alt = card.name;
 
-        return Slide;
+        return Card;
     }
 
 }
+
+function Slider(slides) {
+    
+    this.slides = slides;
+    
+    this.createSlider = function () {
+      const slider = document.createElement('div');
+      slider.classList.add('slider');
+  
+      // Slides container
+      const slidesContainer = document.createElement('div');
+      slidesContainer.classList.add('slides');
+      slider.appendChild(slidesContainer);
+  
+      // Add each slide to the container
+      this.slides.forEach((slide, index) => {
+        slidesContainer.appendChild(this.createSlide(slide, index));
+      });
+  
+      // Slide controls
+      const slideControls = document.createElement('div');
+      slideControls.classList.add('slide-controls');
+      this.slides.forEach((_, index) => {
+        const control = document.createElement('a');
+        control.href = `#slide${index + 1}`;
+        slideControls.appendChild(control);
+      });
+      slider.appendChild(slideControls);
+  
+      return slider;
+    };
+  
+    this.createSlide = function (slide, index) {
+      const slideDiv = document.createElement('div');
+      slideDiv.classList.add('slide');
+      slideDiv.id = `slide${index + 1}`;
+  
+      const slideImg = document.createElement('img');
+      slideImg.src = slide.src;
+      slideImg.alt = slide.name; // Assuming you have an 'alt' property in the slide object
+  
+      slideDiv.appendChild(slideImg);
+      return slideDiv;
+    };
+  }
+  
 
 
 
@@ -24311,6 +24924,8 @@ function Video(video){
         video.muted = true;
         video.loop = true;
 
+        video.poster = this.video.poster;
+
         const source = document.createElement('source');
         source.src = this.video.src;
         source.type = this.video.type;
@@ -24329,21 +24944,21 @@ function Carousel(elements){
         const carousel = document.createElement('div');
         carousel.classList.add('carousel');
         for(let element of this.elements){
-            carousel.appendChild(this.createSlide(element));
+            carousel.appendChild(this.createFrame(element));
         }
         return carousel;
     }
 
-    this.createSlide = function(element) {
+    this.createFrame = function(element) {
         if(element.type.includes('image')){
             const imageElement = new Image();
             imageElement.src = element.src;
-            imageElement.classList.add('slide');
+            imageElement.classList.add('frame');
             return imageElement;
         }else if(element.type.includes('video')){
             const videoConstructor =  new Video(element);
             const videoElement = videoConstructor.createVideo();
-            videoElement.classList.add('slide');
+            videoElement.classList.add('frame');
             return videoElement;
         }
     }
@@ -24423,6 +25038,21 @@ var map = {
 		1,
 		"src_images_IMG_6778_JPG_raw"
 	],
+	"./SBTSMasterClass.png": [
+		"./src/images/SBTSMasterClass.png?raw",
+		1,
+		"src_images_SBTSMasterClass_png_raw"
+	],
+	"./SBTSPParty.PNG": [
+		"./src/images/SBTSPParty.PNG?raw",
+		1,
+		"src_images_SBTSPParty_PNG_raw"
+	],
+	"./SBTSWParty.PNG": [
+		"./src/images/SBTSWParty.PNG?raw",
+		1,
+		"src_images_SBTSWParty_PNG_raw"
+	],
 	"./alfa-malaysia.jpeg": [
 		"./src/images/alfa-malaysia.jpeg?raw",
 		1,
@@ -24453,15 +25083,100 @@ var map = {
 		1,
 		"src_images_chris-gray_jpeg_raw"
 	],
+	"./classes.svg": [
+		"./src/images/classes.svg?raw",
+		9,
+		"src_images_classes_svg_raw"
+	],
+	"./classes1.jpg": [
+		"./src/images/classes1.jpg?raw",
+		1,
+		"src_images_classes1_jpg_raw"
+	],
+	"./classesText.svg": [
+		"./src/images/classesText.svg?raw",
+		9,
+		"src_images_classesText_svg_raw"
+	],
+	"./dance_morph.svg": [
+		"./src/images/dance_morph.svg?raw",
+		9,
+		"src_images_dance_morph_svg_raw"
+	],
 	"./dark-logo.svg": [
 		"./src/images/dark-logo.svg?raw",
 		9,
 		"src_images_dark-logo_svg_raw"
 	],
+	"./eventsText.svg": [
+		"./src/images/eventsText.svg?raw",
+		9,
+		"src_images_eventsText_svg_raw"
+	],
+	"./eventsText2.svg": [
+		"./src/images/eventsText2.svg?raw",
+		9,
+		"src_images_eventsText2_svg_raw"
+	],
+	"./festivals.jpg": [
+		"./src/images/festivals.jpg?raw",
+		1,
+		"src_images_festivals_jpg_raw"
+	],
+	"./festivals2.jpg": [
+		"./src/images/festivals2.jpg?raw",
+		1,
+		"src_images_festivals2_jpg_raw"
+	],
 	"./jeju.jpeg": [
 		"./src/images/jeju.jpeg?raw",
 		1,
 		"src_images_jeju_jpeg_raw"
+	],
+	"./linking1.jpeg": [
+		"./src/images/linking1.jpeg?raw",
+		1,
+		"src_images_linking1_jpeg_raw"
+	],
+	"./linking2.jpeg": [
+		"./src/images/linking2.jpeg?raw",
+		1,
+		"src_images_linking2_jpeg_raw"
+	],
+	"./linking3.jpeg": [
+		"./src/images/linking3.jpeg?raw",
+		1,
+		"src_images_linking3_jpeg_raw"
+	],
+	"./linkingAndresYuno.jpeg": [
+		"./src/images/linkingAndresYuno.jpeg?raw",
+		1,
+		"src_images_linkingAndresYuno_jpeg_raw"
+	],
+	"./linkingBachata.jpeg": [
+		"./src/images/linkingBachata.jpeg?raw",
+		1,
+		"src_images_linkingBachata_jpeg_raw"
+	],
+	"./linkingDaniel.jpeg": [
+		"./src/images/linkingDaniel.jpeg?raw",
+		1,
+		"src_images_linkingDaniel_jpeg_raw"
+	],
+	"./linkingJulian.jpeg": [
+		"./src/images/linkingJulian.jpeg?raw",
+		1,
+		"src_images_linkingJulian_jpeg_raw"
+	],
+	"./linkingKohEwa.jpeg": [
+		"./src/images/linkingKohEwa.jpeg?raw",
+		1,
+		"src_images_linkingKohEwa_jpeg_raw"
+	],
+	"./linkingNariGarion.jpeg": [
+		"./src/images/linkingNariGarion.jpeg?raw",
+		1,
+		"src_images_linkingNariGarion_jpeg_raw"
 	],
 	"./lisa-color.jpeg": [
 		"./src/images/lisa-color.jpeg?raw",
@@ -24478,15 +25193,60 @@ var map = {
 		1,
 		"src_images_lisa_png_raw"
 	],
+	"./n.svg": [
+		"./src/images/n.svg?raw",
+		9,
+		"src_images_n_svg_raw"
+	],
+	"./placeholder01.JPG": [
+		"./src/images/placeholder01.JPG?raw",
+		1,
+		"src_images_placeholder01_JPG_raw"
+	],
 	"./sbts.png": [
 		"./src/images/sbts.png?raw",
 		1,
 		"src_images_sbts_png_raw"
 	],
+	"./socials.jpg": [
+		"./src/images/socials.jpg?raw",
+		1,
+		"src_images_socials_jpg_raw"
+	],
+	"./socials.svg": [
+		"./src/images/socials.svg?raw",
+		9,
+		"src_images_socials_svg_raw"
+	],
+	"./socialsText.svg": [
+		"./src/images/socialsText.svg?raw",
+		9,
+		"src_images_socialsText_svg_raw"
+	],
 	"./tdt-logo.svg": [
 		"./src/images/tdt-logo.svg?raw",
 		9,
 		"src_images_tdt-logo_svg_raw"
+	],
+	"./tdt-welcome01.jpg": [
+		"./src/images/tdt-welcome01.jpg?raw",
+		1,
+		"src_images_tdt-welcome01_jpg_raw"
+	],
+	"./tdt-welcome02.jpg": [
+		"./src/images/tdt-welcome02.jpg?raw",
+		1,
+		"src_images_tdt-welcome02_jpg_raw"
+	],
+	"./tdt-welcome03.jpg": [
+		"./src/images/tdt-welcome03.jpg?raw",
+		1,
+		"src_images_tdt-welcome03_jpg_raw"
+	],
+	"./tdt-welcome04.jpg": [
+		"./src/images/tdt-welcome04.jpg?raw",
+		1,
+		"src_images_tdt-welcome04_jpg_raw"
 	],
 	"./the-dance-thread-dark.svg": [
 		"./src/images/the-dance-thread-dark.svg?raw",
@@ -24522,6 +25282,11 @@ var map = {
 		"./src/images/vietnam-latin-x.jpeg?raw",
 		1,
 		"src_images_vietnam-latin-x_jpeg_raw"
+	],
+	"./vlx.jpeg": [
+		"./src/images/vlx.jpeg?raw",
+		1,
+		"src_images_vlx_jpeg_raw"
 	],
 	"./yasmin.jpeg": [
 		"./src/images/yasmin.jpeg?raw",
@@ -24790,97 +25555,184 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Home: () => (/* binding */ Home)
 /* harmony export */ });
-/* harmony import */ var _images_jeju_jpeg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! .././images/jeju.jpeg */ "./src/images/jeju.jpeg");
-/* harmony import */ var _images_sbts_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././images/sbts.png */ "./src/images/sbts.png");
-/* harmony import */ var _images_vietnam_latin_x_jpeg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/vietnam-latin-x.jpeg */ "./src/images/vietnam-latin-x.jpeg");
-/* harmony import */ var _images_bmj_july_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! .././images/bmj-july.jpg */ "./src/images/bmj-july.jpg");
-/* harmony import */ var _images_alfa_malaysia_jpeg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! .././images/alfa-malaysia.jpeg */ "./src/images/alfa-malaysia.jpeg");
-/* harmony import */ var _components_slideshow_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! .././components/slideshow.js */ "./src/components/slideshow.js");
+/* harmony import */ var _images_festivals2_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! .././images/festivals2.jpg */ "./src/images/festivals2.jpg");
+/* harmony import */ var _images_classes1_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././images/classes1.jpg */ "./src/images/classes1.jpg");
+/* harmony import */ var _images_socials_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/socials.jpg */ "./src/images/socials.jpg");
+/* harmony import */ var _hub_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hub.js */ "./src/pages/hub.js");
+/* harmony import */ var _components_slideshow_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! .././components/slideshow.js */ "./src/components/slideshow.js");
 
 
 
 
 
 
-const slides = [
-  {
-    name: 'Jeju Latin Culture Festival 2024',
-    src: _images_jeju_jpeg__WEBPACK_IMPORTED_MODULE_0__
-  },
-  {
-    name: 'Bachata Media Japan Festival Summer Edition',
-    src: _images_bmj_july_jpg__WEBPACK_IMPORTED_MODULE_3__
-  },
-  {
-    name: 'Vietnam Latin Xperience',
-    src: _images_vietnam_latin_x_jpeg__WEBPACK_IMPORTED_MODULE_2__
-  },
-  {
-    name: 'Salsa Bachata Temptation Singapore',
-    src: _images_sbts_png__WEBPACK_IMPORTED_MODULE_1__
-  },
-  {
-    name: 'Afro Latin Festival Asia',
-    src: _images_alfa_malaysia_jpeg__WEBPACK_IMPORTED_MODULE_4__
-  }
 
-]
-
-;
 
 function Home(){
 
     const content = document.createElement('div');
     content.classList.add('content');
 
-    const slideshowConstructor = new _components_slideshow_js__WEBPACK_IMPORTED_MODULE_5__.Slideshow(slides);
-    const slideshow = slideshowConstructor.createSlideshow();
+    const homeTabs = document.createElement('div');
+    homeTabs.classList.add('home-tabs');
 
-    content.appendChild(slideshow);
+    const eventsTab = document.createElement('div');
+    eventsTab.classList.add('home-tab');
+    eventsTab.dataset.section = 'events';
+    eventsTab.innerHTML = `
+    <svg
+      viewBox="0 0 99.271835 26.241095"
+      version="1.1"
+      id="events-tab-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="events-img" patterUnits="userSpaceOnUse" width="1" height="1">
+            <image href=${_images_festivals2_jpg__WEBPACK_IMPORTED_MODULE_0__} x="0" y="-10" width="100%"/>
+        </pattern>
+      </defs>
+      <g
+        id="events-g"
+        transform="translate(0.88899696,5.4343834)">
+        <mask id="events-mask">
+          <path
+            style="fill:#ffffff;stroke:black;stroke-width:0;stroke-linecap:square"
+            d="M 16.869853,3.630089 V 0.24341698 H 7.6200047 V 15.060107 H 17.060353 V 11.694602 H 11.387677 V 9.0910977 h 5.037675 V 5.7255924 H 11.387677 V 3.630089 Z m 9.60969,4.9953413 H 26.373709 L 22.90237,0.24341698 h -3.640672 v 0.57150091 l 6.35001,14.41452311 h 1.608669 L 33.506887,0.81491789 V 0.24341698 H 29.866215 Z M 45.487231,3.630089 V 0.24341698 H 36.237383 V 15.060107 h 9.440348 V 11.694602 H 40.005056 V 9.0910977 H 45.04273 V 5.7255924 H 40.005056 V 3.630089 Z m 7.895186,11.430018 V 7.7787623 l 7.471845,7.3025117 h 1.354669 V 0.24341698 H 58.335425 V 7.5035952 L 50.842413,0.17991688 H 49.466578 V 15.060107 Z M 65.045283,0.24341698 V 3.630089 h 3.640672 v 11.430018 h 3.746506 V 3.630089 h 3.619506 V 0.24341698 Z M 81.555314,10.530433 h -3.661839 c -0.08467,6.519344 11.980352,6.35001 11.980352,0.127001 0,-3.704173 -2.878671,-4.0851736 -5.820842,-4.4026741 -1.333502,-0.1481669 -2.434171,-0.3810006 -2.349504,-1.5028357 0.127,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923436 -11.430018,-6.3923436 -11.303018,0 0.04233,3.2173384 2.159003,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709337,0.2540004 2.709337,1.2911693 0,1.735669 -4.635507,1.778003 -4.635507,-0.105834 z">
+           
+            <animate
+              id="events-animation"
+              attributeName="stroke-width"
+              values="0;5"
+              dur="1s"
+              fill="freeze"
+              begin="indefinite"
+              />
+          />
+        </mask>
 
-    //Slideshow animation
+        <path
+          mask="url(#events-mask)"
+          d="M 16.869853,3.630089 V 0.24341698 H 7.6200047 V 15.060107 H 17.060353 V 11.694602 H 11.387677 V 9.0910977 h 5.037675 V 5.7255924 H 11.387677 V 3.630089 Z m 9.60969,4.9953413 H 26.373709 L 22.90237,0.24341698 h -3.640672 v 0.57150091 l 6.35001,14.41452311 h 1.608669 L 33.506887,0.81491789 V 0.24341698 H 29.866215 Z M 45.487231,3.630089 V 0.24341698 H 36.237383 V 15.060107 h 9.440348 V 11.694602 H 40.005056 V 9.0910977 H 45.04273 V 5.7255924 H 40.005056 V 3.630089 Z m 7.895186,11.430018 V 7.7787623 l 7.471845,7.3025117 h 1.354669 V 0.24341698 H 58.335425 V 7.5035952 L 50.842413,0.17991688 H 49.466578 V 15.060107 Z M 65.045283,0.24341698 V 3.630089 h 3.640672 v 11.430018 h 3.746506 V 3.630089 h 3.619506 V 0.24341698 Z M 81.555314,10.530433 h -3.661839 c -0.08467,6.519344 11.980352,6.35001 11.980352,0.127001 0,-3.704173 -2.878671,-4.0851736 -5.820842,-4.4026741 -1.333502,-0.1481669 -2.434171,-0.3810006 -2.349504,-1.5028357 0.127,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923436 -11.430018,-6.3923436 -11.303018,0 0.04233,3.2173384 2.159003,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709337,0.2540004 2.709337,1.2911693 0,1.735669 -4.635507,1.778003 -4.635507,-0.105834 z"
+          id="events-svg-path"
+          fill="url(#events-img)"
+          aria-label="EVENTS" />
+      </g>
+    </svg>
+    `
+    homeTabs.appendChild(eventsTab);
 
-    const slideContainers = slideshow.querySelectorAll('.slide-container');
-    let activeSlide = 0;
+    const classesTab = document.createElement('div');
+    classesTab.classList.add('home-tab');
+    classesTab.dataset.section = 'classes';
+    classesTab.innerHTML = `
+    <svg
+      viewBox="0 0 99.271835 26.241095"
+      version="1.1"
+      id="classes-tab-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="classes-img" patterUnits="userSpaceOnUse" width="1" height="1">
+            <image href=${_images_classes1_jpg__WEBPACK_IMPORTED_MODULE_1__} x="-6.5" y="-20" width="110%"/>
+        </pattern>
+      </defs>
+    <g
+      id="classes-g"
+      transform="translate(0.88899696,5.4343834)">
+      <mask id="classes-mask">
+          <path
+            style="fill:#ffffff;stroke:black;stroke-width:0;stroke-linecap:square"
+            d="m -0.56091855,7.6358672 c 0.0211667,5.0376748 3.83117275,7.5776788 7.59884545,7.5565118 3.1538381,0 6.4770101,-1.651002 7.0273441,-5.8420091 H 10.339932 C 9.9377648,10.937872 8.6465961,11.742207 7.0379269,11.742207 4.7942566,11.72104 3.354921,9.8160374 3.354921,7.6358672 c 0,-2.4553372 1.4605023,-4.1275066 3.6830059,-4.1275066 1.5875025,0 2.7093376,0.6773345 3.2385051,2.1801702 h 3.725339 C 13.43027,1.7303578 10.107098,0.05818848 7.0379269,0.05818848 c -3.7676727,0 -7.57767875,2.54000402 -7.59884545,7.57767872 z M 21.283102,11.636374 V 0.22752209 H 17.473096 V 15.044212 h 9.186348 v -3.407838 z m 11.218346,1.545169 h 5.842009 l 0.867835,1.862669 h 3.704172 V 14.493878 L 36.226787,0.03702178 H 34.596951 L 27.929441,14.493878 v 0.550334 h 3.704172 z m 1.227669,-3.2385054 1.672169,-3.8946729 1.714503,3.8946729 z m 14.287518,0.5715004 h -3.66184 c -0.08467,6.519344 11.980353,6.413511 11.980353,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820843,-4.466174 -1.333502,-0.1481669 -2.43417,-0.3810006 -2.349503,-1.5028357 0.127,-1.7568362 4.106339,-1.9261698 4.106339,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159004,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z m 14.245205,0 H 58.6 c -0.08467,6.519344 11.980353,6.413511 11.980353,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820843,-4.466174 -1.333502,-0.1481669 -2.43417,-0.3810006 -2.349504,-1.5028357 0.127001,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159004,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z M 83.132222,3.6141941 V 0.22752209 H 73.882374 V 15.044212 h 9.440348 V 11.678707 H 77.650046 V 9.0752028 h 5.037675 V 5.7096975 H 77.650046 V 3.6141941 Z m 6.604017,6.9003439 H 86.0744 c -0.08467,6.519344 11.980352,6.413511 11.980352,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820842,-4.466174 -1.333502,-0.1481669 -2.434171,-0.3810006 -2.349504,-1.5028357 0.127,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159003,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635508,1.714503 -4.635508,-0.169334 z">
+           
+            <animate
+              id="classes-animation"
+              attributeName="stroke-width"
+              values="0;5"
+              dur="1s"
+              fill="freeze"
+              begin="indefinite"
+            />
+          />
+        </mask>
+      transform="translate(0.88899696,5.4343834)">
+      <path
+        mask="url(#classes-mask)"
+        d="m -0.56091855,7.6358672 c 0.0211667,5.0376748 3.83117275,7.5776788 7.59884545,7.5565118 3.1538381,0 6.4770101,-1.651002 7.0273441,-5.8420091 H 10.339932 C 9.9377648,10.937872 8.6465961,11.742207 7.0379269,11.742207 4.7942566,11.72104 3.354921,9.8160374 3.354921,7.6358672 c 0,-2.4553372 1.4605023,-4.1275066 3.6830059,-4.1275066 1.5875025,0 2.7093376,0.6773345 3.2385051,2.1801702 h 3.725339 C 13.43027,1.7303578 10.107098,0.05818848 7.0379269,0.05818848 c -3.7676727,0 -7.57767875,2.54000402 -7.59884545,7.57767872 z M 21.283102,11.636374 V 0.22752209 H 17.473096 V 15.044212 h 9.186348 v -3.407838 z m 11.218346,1.545169 h 5.842009 l 0.867835,1.862669 h 3.704172 V 14.493878 L 36.226787,0.03702178 H 34.596951 L 27.929441,14.493878 v 0.550334 h 3.704172 z m 1.227669,-3.2385054 1.672169,-3.8946729 1.714503,3.8946729 z m 14.287518,0.5715004 h -3.66184 c -0.08467,6.519344 11.980353,6.413511 11.980353,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820843,-4.466174 -1.333502,-0.1481669 -2.43417,-0.3810006 -2.349503,-1.5028357 0.127,-1.7568362 4.106339,-1.9261698 4.106339,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159004,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z m 14.245205,0 H 58.6 c -0.08467,6.519344 11.980353,6.413511 11.980353,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820843,-4.466174 -1.333502,-0.1481669 -2.43417,-0.3810006 -2.349504,-1.5028357 0.127001,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159004,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z M 83.132222,3.6141941 V 0.22752209 H 73.882374 V 15.044212 h 9.440348 V 11.678707 H 77.650046 V 9.0752028 h 5.037675 V 5.7096975 H 77.650046 V 3.6141941 Z m 6.604017,6.9003439 H 86.0744 c -0.08467,6.519344 11.980352,6.413511 11.980352,0.190501 0,-3.7041728 -2.878671,-4.1486735 -5.820842,-4.466174 -1.333502,-0.1481669 -2.434171,-0.3810006 -2.349504,-1.5028357 0.127,-1.7568362 4.10634,-1.9261698 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430018,-6.3923435 -11.303018,0 0.04233,3.2173384 2.159003,4.3180068 5.376342,4.5508405 1.481669,0.084667 2.709338,0.3175005 2.709338,1.3546692 0,1.735669 -4.635508,1.714503 -4.635508,-0.169334 z"
+        id="classes-svg-path"
+        fill="url(#classes-img)"
+        aria-label="classes"/>
+      </g>
+    </svg>
+    `
+    homeTabs.appendChild(classesTab);
+    
+    const socialsTab = document.createElement('div');
+    socialsTab.classList.add('home-tab');
+    socialsTab.dataset.section = 'socials';
+    socialsTab.innerHTML = `
+    <svg
+      viewBox="0 0 99.271835 26.241095"
+      version="1.1"
+      id="socials-tab-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="socials-img" patterUnits="userSpaceOnUse" width="1" height="1">
+            <image href=${_images_socials_jpg__WEBPACK_IMPORTED_MODULE_2__} x="-12" y="-50" width="120%"/>
+        </pattern>
+      </defs>
+  
+      <g
+        id="socials-g"
+        transform="translate(0.88899696,5.4343834)">
+        <mask id="classes-mask">
+          <path
+            style="fill:#ffffff;stroke:black;stroke-width:0;stroke-linecap:square"
+            d="m 3.1117413,10.51983 h -3.66183911 c -0.0846668,6.519344 11.98035281,6.413511 11.98035281,0.190501 0,-3.7041729 -2.8786717,-4.1486736 -5.820843,-4.4661741 C 4.2759099,6.09599 3.1752415,5.8631563 3.2599083,4.7413212 3.3869085,2.9844851 7.3662481,2.8151515 7.3662481,4.7836546 h 3.5983389 c 0.08467,-6.3923435 -11.43001801,-6.3923435 -11.30301781,0 0.0423334,3.2173385 2.15900341,4.3180069 5.37634191,4.5508406 1.481669,0.084667 2.7093376,0.3175005 2.7093376,1.3546688 0,1.735669 -4.6355074,1.714503 -4.6355074,-0.169334 z M 29.019797,7.6623259 c 0,-10.244683 -15.197691,-10.244683 -15.197691,0 0,10.2658501 15.197691,10.2658501 15.197691,0 z m -11.303018,0 c 0,-5.3340085 7.429512,-5.3340085 7.429512,0 0,5.3763421 -7.429512,5.3763421 -7.429512,0 z m 13.800676,-0.021167 c 0.02117,5.0376751 3.831173,7.5776791 7.598845,7.5565121 3.153839,0 6.477011,-1.651002 7.027345,-5.8420094 H 42.418306 C 42.016138,10.943164 40.72497,11.747499 39.1163,11.747499 36.87263,11.726332 35.433295,9.8213293 35.433295,7.6411592 c 0,-2.4553373 1.460502,-4.1275066 3.683005,-4.1275066 1.587503,0 2.709338,0.6773344 3.238506,2.1801701 h 3.725339 C 45.508644,1.7356498 42.185472,0.06348042 39.1163,0.06348042 c -3.767672,0 -7.577678,2.54000408 -7.598845,7.57767848 z M 55.859148,15.049504 V 11.726332 H 53.975312 V 3.5348193 h 1.735669 V 0.23281403 H 48.493136 V 3.5348193 h 1.73567 v 8.1915127 h -1.883837 v 3.323172 z m 6.053679,-1.862669 h 5.84201 l 0.867834,1.862669 h 3.704173 V 14.49917 L 65.638167,0.04231372 H 64.008331 L 57.34082,14.49917 v 0.550334 h 3.704173 z m 1.227669,-3.2385055 1.672169,-3.8946729 1.714503,3.8946729 z m 15.45169,1.6933365 V 0.23281403 H 74.78218 V 15.049504 h 9.186348 V 11.641666 Z M 89.725862,10.51983 h -3.661839 c -0.08467,6.519344 11.980352,6.413511 11.980352,0.190501 0,-3.7041729 -2.878671,-4.1486736 -5.820843,-4.4661741 C 90.89003,6.09599 89.789362,5.8631563 89.874029,4.7413212 c 0.127,-1.7568361 4.10634,-1.9261697 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430019,-6.3923435 -11.303018,0 0.04233,3.2173385 2.159003,4.3180069 5.376342,4.5508406 1.481669,0.084667 2.709337,0.3175005 2.709337,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z">
+           
+            <animate
+              id="socials-animation"
+              attributeName="stroke-width"
+              values="0;5"
+              dur="1s"
+              fill="freeze"
+              begin="indefinite"
+            />
+          />
+        </mask>
+        <path
+          mask="url(#socials-mask)"
+          d="m 3.1117413,10.51983 h -3.66183911 c -0.0846668,6.519344 11.98035281,6.413511 11.98035281,0.190501 0,-3.7041729 -2.8786717,-4.1486736 -5.820843,-4.4661741 C 4.2759099,6.09599 3.1752415,5.8631563 3.2599083,4.7413212 3.3869085,2.9844851 7.3662481,2.8151515 7.3662481,4.7836546 h 3.5983389 c 0.08467,-6.3923435 -11.43001801,-6.3923435 -11.30301781,0 0.0423334,3.2173385 2.15900341,4.3180069 5.37634191,4.5508406 1.481669,0.084667 2.7093376,0.3175005 2.7093376,1.3546688 0,1.735669 -4.6355074,1.714503 -4.6355074,-0.169334 z M 29.019797,7.6623259 c 0,-10.244683 -15.197691,-10.244683 -15.197691,0 0,10.2658501 15.197691,10.2658501 15.197691,0 z m -11.303018,0 c 0,-5.3340085 7.429512,-5.3340085 7.429512,0 0,5.3763421 -7.429512,5.3763421 -7.429512,0 z m 13.800676,-0.021167 c 0.02117,5.0376751 3.831173,7.5776791 7.598845,7.5565121 3.153839,0 6.477011,-1.651002 7.027345,-5.8420094 H 42.418306 C 42.016138,10.943164 40.72497,11.747499 39.1163,11.747499 36.87263,11.726332 35.433295,9.8213293 35.433295,7.6411592 c 0,-2.4553373 1.460502,-4.1275066 3.683005,-4.1275066 1.587503,0 2.709338,0.6773344 3.238506,2.1801701 h 3.725339 C 45.508644,1.7356498 42.185472,0.06348042 39.1163,0.06348042 c -3.767672,0 -7.577678,2.54000408 -7.598845,7.57767848 z M 55.859148,15.049504 V 11.726332 H 53.975312 V 3.5348193 h 1.735669 V 0.23281403 H 48.493136 V 3.5348193 h 1.73567 v 8.1915127 h -1.883837 v 3.323172 z m 6.053679,-1.862669 h 5.84201 l 0.867834,1.862669 h 3.704173 V 14.49917 L 65.638167,0.04231372 H 64.008331 L 57.34082,14.49917 v 0.550334 h 3.704173 z m 1.227669,-3.2385055 1.672169,-3.8946729 1.714503,3.8946729 z m 15.45169,1.6933365 V 0.23281403 H 74.78218 V 15.049504 h 9.186348 V 11.641666 Z M 89.725862,10.51983 h -3.661839 c -0.08467,6.519344 11.980352,6.413511 11.980352,0.190501 0,-3.7041729 -2.878671,-4.1486736 -5.820843,-4.4661741 C 90.89003,6.09599 89.789362,5.8631563 89.874029,4.7413212 c 0.127,-1.7568361 4.10634,-1.9261697 4.10634,0.042333 h 3.598339 c 0.08467,-6.3923435 -11.430019,-6.3923435 -11.303018,0 0.04233,3.2173385 2.159003,4.3180069 5.376342,4.5508406 1.481669,0.084667 2.709337,0.3175005 2.709337,1.3546692 0,1.735669 -4.635507,1.714503 -4.635507,-0.169334 z"
+          id="socials-svg-path"
+          fill="url(#socials-img)"
+          aria-label="SOCIALS" />
+      </g>
+    </svg>
+    `
+    homeTabs.appendChild(socialsTab);
+    
+    content.appendChild(homeTabs);
 
-    // slideContainers.forEach((container,index) => {
-    // container.addEventListener('click', () => {
-    //     showSlide(index+1);
-    // });
-    // });
-
-    //Automatic slide change
-    let slideshowInterval;
-
-    //Start the slideshow on page load (We set the active slide when loading the page)
-    activeSlide = 0;
-    startSlideshow();
-
-    slideContainers.forEach(container => {
-    container.addEventListener('mouseenter',stopSlideshow);
-    container.addEventListener('mouseleave',startSlideshow);
-    });
-
-    function startSlideshow() {
-        slideshowInterval = setInterval(() => {
-            showSlide(activeSlide +1);
-        },5000);//Show the next slide every 3000
+    for(let tab of homeTabs.children){
+      tab.addEventListener('click',showHub);
     }
     
-    function stopSlideshow(){
-        clearInterval(slideshowInterval);
-    }
-    
-    function showSlide(n) {
-        const m =  slideContainers.length; 
-        const previousSlide = slideContainers[(activeSlide - 1 + m) % m];
-        previousSlide.classList.remove('was-active'); 
-        const currentSlide = slideContainers[activeSlide];
-        currentSlide.classList.add('was-active');
-        currentSlide.classList.remove('active');
-    
-        activeSlide = (n+m)%m;
-        slideContainers[activeSlide].classList.add('active');
+    function showHub(event){
+      const nextPage = (0,_hub_js__WEBPACK_IMPORTED_MODULE_3__.Hub)();
+      const currentPage = document.querySelector('.content');
+      const page = document.querySelector('.page');
+      page.removeChild(currentPage);
+      //Load page
+      page.appendChild(nextPage);
+      //Highlight hub section
+      const sections =  document.querySelector('.hub-menu').children;
+      const activeSection = event.target.closest('.home-tab').dataset.section;
+      for(let element of sections){
+        element.classList.remove('active');
+        if(element.dataset.section === activeSection){
+          element.classList.add('active');
+        }
+      }
     }
     
     return content;
@@ -24888,138 +25740,6 @@ function Home(){
 }
 
 
-// import { DanceDemo } from '../components/dance-demo';
-
-// import salsaVideo from './videos/salsa-demo.mp4';
-// import bachataVideo from './videos/bachata-demo.mp4';
-
-// const elements = [
-//   {
-//     name: 'salsa-video',
-//     src: salsaVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Salsa',
-//     info: 'With roots in Cuba, salsa is known for its rhythmic footwork and passionate movements. Set to infectious music blending Afro-Cuban rhythms with jazz and rock, it is a social dance celebrated for its fun, expressive, and community-building atmosphere.',
-//     stylePage: 'culture/salsa',
-//     findAClassPage: 'hub/classes/salsa'
-//   },
-//   {
-//     name: 'bachata-video',
-//     src: bachataVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Bachata',
-//     info: 'A romantic partner dance originating from the Dominican Republic, it is known for its close embrace and expressive hip movements. Bachata is beloved globally for its emotional connection, and social nature. ',
-//     stylePage: 'culture/bachata',
-//     findAClassPage: 'hub/classes/bachata'
-//   },
-//   {
-//     name: 'zouk-video',
-//     src: zoukVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Zouk',
-//     info: 'Born in the French Caribbean, Zouk is a sensual partner dance known for its fluidity, body isolations, and head movements. Its music combines Caribbean rhythms with electronic beats, creating a captivating atmosphere.',
-//     stylePage: 'culture/zouk',
-//     findAClassPage: 'hub/classes/zouk'
-//   },
-//   {
-//     name: 'hiphop-video',
-//     src: hiphopVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Hip-Hop',
-//     info: 'Emerging from the streets of New York City, Hip-Hop is a diverse and energetic dance style characterized by its freestyle movements, popping, locking, and breaking. With roots in African and Caribbean dance traditions, Hip-Hop music and culture continue to evolve and inspire.',
-//     stylePage: 'culture/hiphop',
-//     findAClassPage: 'hub/classes/hiphop'
-//   },
-//   {
-//     name: 'kizomba-video',
-//     src: kizombaVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Kizomba',
-//     info: 'Originating in Angola, Kizomba is a sensual and intimate partner dance known for its slow, controlled movements and close connection between partners. Its music blends Angolan rhythms with European influences, creating a romantic and captivating soundscape.',
-//     stylePage: 'culture/kizomba',
-//     findAClassPage: 'hub/classes/kizomba'
-//   },
-//   {
-//     name: 'poledance-video',
-//     src: poledanceVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Pole Dance',
-//     info: 'Pole dance is a physically demanding art form that combines dance and acrobatics on a vertical pole. It promotes strength, flexibility, and body positivity, offering a unique form of creative expression and empowerment.',
-//     stylePage: 'culture/poledance',
-//     findAClassPage: 'hub/classes/poledance'
-//   },
-//   {
-//     name: 'heels-video',
-//     src: heelsVideo,
-//     type: 'video/mp4',
-//     danceStyle: 'Heels Dance',
-//     info: 'Heels dance is a fierce and empowering style that celebrates femininity, confidence, and sensuality. Often performed in high heels, it blends elements of jazz, hip-hop, and contemporary dance, creating a dynamic and expressive form of movement.',
-//     stylePage: 'culture/heels',
-//     findAClassPage: 'hub/classes/heels'
-//   }
-
-// ]
-
-// function Home(){
-
-//     const content = document.createElement('div');
-//     content.classList.add('content');
-
-//     const demoConstructor = new DanceDemo(elements);
-//     const slider = sliderConstructor.createDemoSlider();
-
-//     content.appendChild(slider);
-
-//     //Slideshow animation
-
-//     const slideContainers = slideshow.querySelectorAll('.slide-container');
-//     let activeSlide = 0;
-
-//     // slideContainers.forEach((container,index) => {
-//     // container.addEventListener('click', () => {
-//     //     showSlide(index+1);
-//     // });
-//     // });
-
-//     //Automatic slide change
-//     let slideshowInterval;
-
-//     //Start the slideshow on page load (We set the active slide when loading the page)
-//     activeSlide = 0;
-//     startSlideshow();
-
-//     slideContainers.forEach(container => {
-//     container.addEventListener('mouseenter',stopSlideshow);
-//     container.addEventListener('mouseleave',startSlideshow);
-//     });
-
-//     function startSlideshow() {
-//         slideshowInterval = setInterval(() => {
-//             showSlide(activeSlide +1);
-//         },5000);//Show the next slide every 3000
-//     }
-    
-//     function stopSlideshow(){
-//         clearInterval(slideshowInterval);
-//     }
-    
-//     function showSlide(n) {
-//         const m =  slideContainers.length; 
-//         const previousSlide = slideContainers[(activeSlide - 1 + m) % m];
-//         previousSlide.classList.remove('was-active'); 
-//         const currentSlide = slideContainers[activeSlide];
-//         currentSlide.classList.add('was-active');
-//         currentSlide.classList.remove('active');
-    
-//         activeSlide = (n+m)%m;
-//         slideContainers[activeSlide].classList.add('active');
-//     }
-    
-//     return content;
-
-// }
-
-// export { Home };
 
 /***/ }),
 
@@ -25034,116 +25754,273 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Hub: () => (/* binding */ Hub)
 /* harmony export */ });
-function Hub(){
-    const content = document.createElement('div');
-    content.classList.add('content');
-    const title = document.createElement('div');
-    title.classList.add('teaser-title');
-    title.textContent = 'GET READY TO MOVE: YOUR DANCE JOURNEY BEGINS SOON';
-    content.appendChild(title);
-    const teaser = document.createElement('p');
-    teaser.classList.add('teaser');
-    teaser.innerHTML = 'Discover a vibrant hub of dance events and classes across Asia. From beginner workshops to professional showcases, find your rhythm and connect with a passionate community of dancers.'+'<br><br>'+'Become part of the community! <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhp4VmqFQfbsUJmGeT670cnJjmJ2HS69fqdhSJPMPrH9Q8Ug/viewform" rel="noopener noreferrer" target="_blank">JOIN</a> our mailing list for early access and exclusive updates.';
-    content.appendChild(teaser);
-    // const teaserCTA = document.createElement('p');
-    // teaserCTA.classList.add('teaser-cta');
-    // teaserCTA.innerHTML = 'Become part of the community! <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhp4VmqFQfbsUJmGeT670cnJjmJ2HS69fqdhSJPMPrH9Q8Ug/viewform" rel="noopener noreferrer">Join</a> our mailing list and for early access and exclusive updates.'
-    // content.appendChild(teaserCTA);
+/* harmony import */ var _components_event_info__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/event-info */ "./src/components/event-info.js");
+/* harmony import */ var _components_event_schedule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/event-schedule */ "./src/components/event-schedule.js");
+/* harmony import */ var _images_sbts_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! .././images/sbts.png */ "./src/images/sbts.png");
+/* harmony import */ var _images_SBTSWParty_PNG__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! .././images/SBTSWParty.PNG */ "./src/images/SBTSWParty.PNG");
+/* harmony import */ var _images_SBTSPParty_PNG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! .././images/SBTSPParty.PNG */ "./src/images/SBTSPParty.PNG");
+/* harmony import */ var _images_SBTSMasterClass_PNG__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! .././images/SBTSMasterClass.PNG */ "./src/images/SBTSMasterClass.PNG");
+/* harmony import */ var _images_linkingBachata_jpeg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! .././images/linkingBachata.jpeg */ "./src/images/linkingBachata.jpeg");
+/* harmony import */ var _images_linking1_jpeg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! .././images/linking1.jpeg */ "./src/images/linking1.jpeg");
+/* harmony import */ var _images_linking2_jpeg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! .././images/linking2.jpeg */ "./src/images/linking2.jpeg");
+/* harmony import */ var _images_linking3_jpeg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! .././images/linking3.jpeg */ "./src/images/linking3.jpeg");
+/* harmony import */ var _images_placeholder01_jpg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! .././images/placeholder01.jpg */ "./src/images/placeholder01.jpg");
 
-    return content;
-}
 
 
 // import jeju from '.././images/jeju.jpeg';
-// import sbts from '.././images/sbts.png';
-// import vietnamLatinX from '.././images/vietnam-latin-x.jpeg';
-// import bmj from '.././images/bmj-july.jpg';
-// import alfaMalaysia from '.././images/alfa-malaysia.jpeg';
+//SBTS
 
-// const slides = [
-//   {
-//     name: 'Jeju Latin Culture Festival 2024',
-//     src: jeju
-//   },
-//   {
-//     name: 'Bachata Media Japan Festival Summer Edition',
-//     src: bmj
-//   },
-//   {
-//     name: 'Vietnam Latin Xperience',
-//     src: vietnamLatinX
-//   },
-//   {
-//     name: 'Salsa Bachata Temptation Singapore',
-//     src: sbts
-//   },
-//   {
-//     name: 'Afro Latin Festival Asia',
-//     src: alfaMalaysia
-//   }
 
-// ]
 
-// import { Slideshow } from '.././components/slideshow.js';
 
-// function Hub(){
 
-//     const content = document.createElement('div');
-//     content.classList.add('content');
+//LBJ
 
-//     const slideshowConstructor = new Slideshow(slides);
-//     const slideshow = slideshowConstructor.createSlideshow();
 
-//     content.appendChild(slideshow);
 
-//     //Slideshow animation
 
-//     const slideContainers = slideshow.querySelectorAll('.slide-container');
-//     let activeSlide = 0;
 
-//     // slideContainers.forEach((container,index) => {
-//     // container.addEventListener('click', () => {
-//     //     showSlide(index+1);
-//     // });
-//     // });
+//Placeholder
 
-//     //Automatic slide change
-//     let slideshowInterval;
 
-//     //Start the slideshow on page load (We set the active slide when loading the page)
-//     activeSlide = 0;
-//     startSlideshow();
 
-//     slideContainers.forEach(container => {
-//     container.addEventListener('mouseenter',stopSlideshow);
-//     container.addEventListener('mouseleave',startSlideshow);
-//     });
-
-//     function startSlideshow() {
-//         slideshowInterval = setInterval(() => {
-//             showSlide(activeSlide +1);
-//         },5000);//Show the next slide every 3000
-//     }
+const danceEvents = [
     
-//     function stopSlideshow(){
-//         clearInterval(slideshowInterval);
-//     }
-    
-//     function showSlide(n) {
-//         const m =  slideContainers.length; 
-//         const previousSlide = slideContainers[(activeSlide - 1 + m) % m];
-//         previousSlide.classList.remove('was-active'); 
-//         const currentSlide = slideContainers[activeSlide];
-//         currentSlide.classList.add('was-active');
-//         currentSlide.classList.remove('active');
-    
-//         activeSlide = (n+m)%m;
-//         slideContainers[activeSlide].classList.add('active');
-//     }
-    
-//     return content;
+    {
+        style: 'Latin',
+        details: {
+            name: 'Salsa Bachata Temptation Singapore',
+            dates: '2024 August 09',
+            venue: {
+                name: 'MAX Atria Garnet',
+                url: 'https://www.google.com/maps/place/Singapore+EXPO+Meeting+Rooms/@1.3332953,103.9567683,15z/data=!4m6!3m5!1s0x31da3d29b4a86847:0x62aaab711af2fcdf!8m2!3d1.3332953!4d103.9567683!16s%2Fg%2F11btww6m0q?entry=ttu'
+            },
+            description: `
+                <div class="event-ad">
+                    <h2 class="ad-headline">Experience the energy of Asia's hottest Latin dance festival!</h2>
+                    <p class="ad-body">
+                        Get ready to learn from <span class="highlight">world-class instructors</span>, 
+                        witness incredible performances, and <span class="highlight">party all night long</span> with 
+                        the best dancers in Asia and <span class="highlight">renowned DJs</span>.
+                    </p>
+                    <p class="ad-cta">Don't miss out on this unforgettable experience!</p>
+                </div>
+            `
+        },
+        slides: [
+            {
+                name: 'sbts-1',
+                src: _images_sbts_png__WEBPACK_IMPORTED_MODULE_2__
+            },
+            {
+                name: 'sbts-2',
+                src: _images_SBTSWParty_PNG__WEBPACK_IMPORTED_MODULE_3__
+            },
+            {
+                name: 'sbts-3',
+                src: _images_SBTSPParty_PNG__WEBPACK_IMPORTED_MODULE_4__
+            },
+            {
+                name: 'sbts-4',
+                src: _images_SBTSMasterClass_PNG__WEBPACK_IMPORTED_MODULE_5__
+            }
+        ],
+        links: [
+            {
+                name: "website",
+                url: "https://salsabachatatemptation.com/",
+                faClass: "fa-solid fa-globe",
+            },
+            {
+                name: "facebook",
+                url: "https://www.facebook.com/SBTS2023",
+                faClass: "fa-brands fa-square-facebook",
+            },
+            {
+                name: "instagram",
+                url: "https://www.instagram.com/Salsabachatatemptationsg/",
+                faClass: "fa-brands fa-instagram",
+            },
+            {
+                name: "youtube",
+                url: "https://www.youtube.com/channel/UCnFxI6FMl4lAxA1UmY6d2ng",
+                faClass: "fa-brands fa-youtube",
+            }
+        ]
+    },
+    {
+        style: 'Latin',
+        details: {
+            name: 'Alonso & Noelia: Linking Japan Bachata Festival',
+            dates: '2024 November 15',
+            venue: {
+                name: 'Tokyo',
+            },
+            description: `
+                <div class="event-ad">
+                    <h2 class="ad-headline">Connect with the world of bachata in the heart of Tokyo.</h2>
+                    <p class="ad-body">Get exclusive training from 
+                        <span class="highlight">Alonso y Noelia</span>, the 
+                        World Bachata Masters silver medalists. 
+                        Join our passionate community for social dancing and unforgettable parties.
+                    </p>
+                    <p class="ad-cta">Don't miss this chance to elevate your bachata experience!</p>
+                </div>
+            `
+        },
+        slides: [
+                {
+                    name: 'linking-1',
+                    src: _images_linkingBachata_jpeg__WEBPACK_IMPORTED_MODULE_6__
+                },
+                {
+                    name: 'linking-2',
+                    src: _images_linking1_jpeg__WEBPACK_IMPORTED_MODULE_7__
+                },
+                {
+                    name: 'linking-3',
+                    src: _images_linking2_jpeg__WEBPACK_IMPORTED_MODULE_8__
+                },
+                {
+                    name: 'linking-4',
+                    src: _images_linking3_jpeg__WEBPACK_IMPORTED_MODULE_9__
+                },
+        ],
+        links: [
+            {
+                name: "facebook",
+                url: "https://www.facebook.com/events/852745789726373/?active_tab=discussion",
+                faClass: "fa-brands fa-square-facebook",
+            },
+            {
+                name: "instagram",
+                url: "https://www.instagram.com/linkingjapan/",
+                faClass: "fa-brands fa-instagram",
+            },
+        ]
+    },
+]
 
-// }
+const eventPlaceHolder = {
+    details: {
+        name: 'Join The Dance Thread',
+        dates: '',
+        venue: {
+            name: '',
+        },
+        description: `
+            <div class="event-ad">
+                <h2 class="ad-headline">Grow your dance community</h2>
+                <p class="ad-body">
+                The Dance Thread is your gateway to Asia's thriving dance scene. Gain exposure, attract new students, and fill your events with passionate dancers.
+                </p>
+                <p class="ad-cta"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfhp4VmqFQfbsUJmGeT670cnJjmJ2HS69fqdhSJPMPrH9Q8Ug/viewform" rel="noopener noreferrer" target="_blank">Reach out</a> to get listed!</p>
+            </div>
+        `
+    },
+    slides: [
+            {
+                name: 'The Dance Thread',
+                src: _images_placeholder01_jpg__WEBPACK_IMPORTED_MODULE_10__
+            }
+    ],
+    links: [
+    ]
+} 
+
+function Hub(){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    const hubContainer = document.createElement('div');
+    hubContainer.classList.add('hub-container');
+
+    content.append(hubContainer);
+
+    //Event information
+    const eventInfoContainer = document.createElement('div');
+    eventInfoContainer.classList.add('event-info-container');
+    hubContainer.appendChild(eventInfoContainer);
+
+    displayHubContent();
+
+    //Separator
+    const separator = document.createElement('div');
+    separator.classList.add('hub-separator');
+    hubContainer.appendChild(separator);
+
+    const eventScheduleConstructor = new _components_event_schedule__WEBPACK_IMPORTED_MODULE_1__.EventSchedule(danceEvents);
+    const eventSchedule = eventScheduleConstructor.createSchedule();
+    const scheduleContainer =document.createElement('div');
+    scheduleContainer.classList.add('schedule-wrapper');
+    //Hub menu
+    const hubMenu = document.createElement('div');
+    hubMenu.classList.add('hub-menu');
+    const hubItems = ['Events', 'Classes', 'Socials'];
+    hubItems.forEach(item =>{
+        const hubItem = document.createElement('div')
+        hubItem.textContent = item;
+        hubItem.dataset.section = item.toLowerCase();
+        hubMenu.appendChild(hubItem);
+    });
+    hubMenu.firstChild.classList.add('active');
+    scheduleContainer.appendChild(hubMenu);
+    
+    scheduleContainer.appendChild(eventSchedule);
+    hubContainer.appendChild(scheduleContainer);
+    
+    const scheduleItems = eventSchedule.querySelectorAll('.schedule-item');
+    scheduleItems.forEach(item => {
+        //Show events thumbnails on the schedule
+        const itemHeader = item.querySelector('h2');
+        itemHeader.addEventListener('click',displaySchedule);
+        //Show the event details on the info container
+        const eventItems = item.querySelectorAll('.event-item');
+        eventItems.forEach(eventItem => {
+            eventItem.addEventListener('click',displayHubContent);
+        });
+    });
+    function displaySchedule(event){
+        const scheduleGrid = event.target.nextElementSibling;
+        scheduleGrid.classList.toggle('active');
+    }
+
+    //Dynamic content change
+    function displayHubContent(event){
+        //For now let's just remove the current content and immediately replace it for the new content
+        eventInfoContainer.innerHTML = '';
+        //Then let's create a new instance of the desired event info
+        let danceEventIndex;
+        if(event){
+            danceEventIndex = event.target.closest('.event-item').dataset.eventIndex;
+        }else{
+            danceEventIndex = 0;
+        }
+        let infoConstructor;
+        if(danceEventIndex>=0){
+            infoConstructor = new _components_event_info__WEBPACK_IMPORTED_MODULE_0__.EventInfo(danceEvents[danceEventIndex]);
+        }else{
+            infoConstructor =  new _components_event_info__WEBPACK_IMPORTED_MODULE_0__.EventInfo(eventPlaceHolder);
+        }
+        const eventInfo = infoConstructor.createEventInfo();
+        //Update content
+        eventInfoContainer.appendChild(eventInfo);
+    }
+
+    const tabs = hubMenu.querySelectorAll('div');
+    tabs.forEach(tab => {
+        tab.addEventListener('click',changeSection);
+    })
+    function changeSection(){
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+    }
+    
+
+    return content;
+}
 
 
 
@@ -25204,25 +26081,36 @@ module.exports = __webpack_require__.p + "f4e87ba875ac8d19dbfd.otf";
 
 /***/ }),
 
-/***/ "./src/images/alfa-malaysia.jpeg":
-/*!***************************************!*\
-  !*** ./src/images/alfa-malaysia.jpeg ***!
-  \***************************************/
+/***/ "./src/images/SBTSMasterClass.PNG":
+/*!****************************************!*\
+  !*** ./src/images/SBTSMasterClass.PNG ***!
+  \****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "abcda75bb6376517d9cf.jpeg";
+module.exports = __webpack_require__.p + "4caf5f6a60a9630276b4.PNG";
 
 /***/ }),
 
-/***/ "./src/images/bmj-july.jpg":
-/*!*********************************!*\
-  !*** ./src/images/bmj-july.jpg ***!
-  \*********************************/
+/***/ "./src/images/SBTSPParty.PNG":
+/*!***********************************!*\
+  !*** ./src/images/SBTSPParty.PNG ***!
+  \***********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "f1f4c94cb9a3a8d86072.jpg";
+module.exports = __webpack_require__.p + "b52ea202e455daae6acc.PNG";
+
+/***/ }),
+
+/***/ "./src/images/SBTSWParty.PNG":
+/*!***********************************!*\
+  !*** ./src/images/SBTSWParty.PNG ***!
+  \***********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "d2b8d023e19128fe4807.PNG";
 
 /***/ }),
 
@@ -25248,14 +26136,69 @@ module.exports = __webpack_require__.p + "be0663dcc3c019a8ad6c.svg";
 
 /***/ }),
 
-/***/ "./src/images/jeju.jpeg":
-/*!******************************!*\
-  !*** ./src/images/jeju.jpeg ***!
-  \******************************/
+/***/ "./src/images/classes1.jpg":
+/*!*********************************!*\
+  !*** ./src/images/classes1.jpg ***!
+  \*********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "3ddb0baf1e67b3f6fef9.jpeg";
+module.exports = __webpack_require__.p + "8e22e65098adb4b8490f.jpg";
+
+/***/ }),
+
+/***/ "./src/images/festivals2.jpg":
+/*!***********************************!*\
+  !*** ./src/images/festivals2.jpg ***!
+  \***********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "987a8414ce5b491a602f.jpg";
+
+/***/ }),
+
+/***/ "./src/images/linking1.jpeg":
+/*!**********************************!*\
+  !*** ./src/images/linking1.jpeg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "7bf9afffc97e53e338f2.jpeg";
+
+/***/ }),
+
+/***/ "./src/images/linking2.jpeg":
+/*!**********************************!*\
+  !*** ./src/images/linking2.jpeg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "0b784c405e58c4e02c7e.jpeg";
+
+/***/ }),
+
+/***/ "./src/images/linking3.jpeg":
+/*!**********************************!*\
+  !*** ./src/images/linking3.jpeg ***!
+  \**********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "5882894463c5c3b489c2.jpeg";
+
+/***/ }),
+
+/***/ "./src/images/linkingBachata.jpeg":
+/*!****************************************!*\
+  !*** ./src/images/linkingBachata.jpeg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "0f09396225b9ede4db50.jpeg";
 
 /***/ }),
 
@@ -25281,6 +26224,17 @@ module.exports = __webpack_require__.p + "b10dd783dc3e6cc09b36.svg";
 
 /***/ }),
 
+/***/ "./src/images/placeholder01.jpg":
+/*!**************************************!*\
+  !*** ./src/images/placeholder01.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "7bfeca28a53bb517e379.jpg";
+
+/***/ }),
+
 /***/ "./src/images/sbts.png":
 /*!*****************************!*\
   !*** ./src/images/sbts.png ***!
@@ -25289,6 +26243,61 @@ module.exports = __webpack_require__.p + "b10dd783dc3e6cc09b36.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "c4c7fef03ae348746390.png";
+
+/***/ }),
+
+/***/ "./src/images/socials.jpg":
+/*!********************************!*\
+  !*** ./src/images/socials.jpg ***!
+  \********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "87541fc9dd0c9d510b84.jpg";
+
+/***/ }),
+
+/***/ "./src/images/tdt-welcome01.jpg":
+/*!**************************************!*\
+  !*** ./src/images/tdt-welcome01.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "5572cdff0f645d89c427.jpg";
+
+/***/ }),
+
+/***/ "./src/images/tdt-welcome02.jpg":
+/*!**************************************!*\
+  !*** ./src/images/tdt-welcome02.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "512acfb2388d6df6a05a.jpg";
+
+/***/ }),
+
+/***/ "./src/images/tdt-welcome03.jpg":
+/*!**************************************!*\
+  !*** ./src/images/tdt-welcome03.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "0e2e9320bdc563b52ee1.jpg";
+
+/***/ }),
+
+/***/ "./src/images/tdt-welcome04.jpg":
+/*!**************************************!*\
+  !*** ./src/images/tdt-welcome04.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "afe49bfa2863cf6d4b5f.jpg";
 
 /***/ }),
 
@@ -25311,17 +26320,6 @@ module.exports = __webpack_require__.p + "5bcd30de64b7f9aabfc6.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "bae2d141af3b90021d61.svg";
-
-/***/ }),
-
-/***/ "./src/images/vietnam-latin-x.jpeg":
-/*!*****************************************!*\
-  !*** ./src/images/vietnam-latin-x.jpeg ***!
-  \*****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-module.exports = __webpack_require__.p + "05ceab7c325e0d8fcb84.jpeg";
 
 /***/ }),
 
@@ -25678,13 +26676,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _images_the_dance_thread_logo_dark_2_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./images/the-dance-thread-logo-dark-2.svg */ "./src/images/the-dance-thread-logo-dark-2.svg");
 /* harmony import */ var _images_the_dance_thread_logo_light_1_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./images/the-dance-thread-logo-light-1.svg */ "./src/images/the-dance-thread-logo-light-1.svg");
 /* harmony import */ var _videos_homescreen1_mp4__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./videos/homescreen1.mp4 */ "./src/videos/homescreen1.mp4");
-/* harmony import */ var _videos_homescreen2_mp4__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./videos/homescreen2.mp4 */ "./src/videos/homescreen2.mp4");
-/* harmony import */ var _videos_homescreen3_mp4__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./videos/homescreen3.mp4 */ "./src/videos/homescreen3.mp4");
-/* harmony import */ var _videos_homescreen4_mp4__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./videos/homescreen4.mp4 */ "./src/videos/homescreen4.mp4");
-/* harmony import */ var _components_welcome_page_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/welcome-page.js */ "./src/components/welcome-page.js");
-/* harmony import */ var _components_logo_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/logo.js */ "./src/components/logo.js");
-/* harmony import */ var _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/infinite-menu.js */ "./src/components/infinite-menu.js");
-/* harmony import */ var _components_footer_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/footer.js */ "./src/components/footer.js");
+/* harmony import */ var _images_tdt_welcome01_jpg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./images/tdt-welcome01.jpg */ "./src/images/tdt-welcome01.jpg");
+/* harmony import */ var _videos_homescreen2_mp4__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./videos/homescreen2.mp4 */ "./src/videos/homescreen2.mp4");
+/* harmony import */ var _images_tdt_welcome02_jpg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./images/tdt-welcome02.jpg */ "./src/images/tdt-welcome02.jpg");
+/* harmony import */ var _videos_homescreen3_mp4__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./videos/homescreen3.mp4 */ "./src/videos/homescreen3.mp4");
+/* harmony import */ var _images_tdt_welcome03_jpg__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./images/tdt-welcome03.jpg */ "./src/images/tdt-welcome03.jpg");
+/* harmony import */ var _videos_homescreen4_mp4__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./videos/homescreen4.mp4 */ "./src/videos/homescreen4.mp4");
+/* harmony import */ var _images_tdt_welcome04_jpg__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./images/tdt-welcome04.jpg */ "./src/images/tdt-welcome04.jpg");
+/* harmony import */ var _components_welcome_page_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/welcome-page.js */ "./src/components/welcome-page.js");
+/* harmony import */ var _components_logo_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/logo.js */ "./src/components/logo.js");
+/* harmony import */ var _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/infinite-menu.js */ "./src/components/infinite-menu.js");
+/* harmony import */ var _components_footer_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/footer.js */ "./src/components/footer.js");
 //Styles, fonts and colors
 
 
@@ -25733,8 +26735,6 @@ function animateIcon() {
 
   const maps = document.querySelectorAll('.map');
 
-  // const theLetters = document.querySelectorAll('.the');
-  // const danceLetters = document.querySelectorAll('.dance');
   const theDance = document.querySelector('#the-dance');
   const cursiveLetters = document.querySelectorAll('[id^="cursive-"]');
   const separator = document.querySelector('#separator');
@@ -25754,25 +26754,6 @@ function animateIcon() {
       path.classList.add('show');
     },2000+customDelays[index]*1000);
   });
-  
-    // letters.forEach((letter, index) => {
-
-    //   const bbox = letter.getBBox();
-    //   const centerX = bbox.x + bbox.width / 2;
-    //   const centerY = bbox.y + bbox.height / 2;
-    //   letter.style.transformOrigin = `${centerX}px ${centerY}px`;
-    
-    //   const delay = 0.5 + customDelays[index]; // 100ms delay per letter
-    //   setTimeout(() => {
-    //       letter.classList.add('show');
-    //     }, delay * 1000); // Convert delay to milliseconds
-    //   }
-    // );
-
-    // const slogan = document.querySelector('.slogan');
-    // setTimeout(() => {
-    //     slogan.classList.add('show');
-    // }, 3500);
 
     const fullIcon = document.querySelector('.animated-icon');
     setTimeout(() => {
@@ -25809,25 +26790,33 @@ const auxLogoSrc = {
 
 
 
+
+
+
+
 const elements = [
   {
     name: 'dance-video-1',
     src: _videos_homescreen1_mp4__WEBPACK_IMPORTED_MODULE_10__["default"],
+    poster: _images_tdt_welcome01_jpg__WEBPACK_IMPORTED_MODULE_11__,
     type: 'video/mp4'
   },
   {
     name: 'dance-video-2',
-    src: _videos_homescreen2_mp4__WEBPACK_IMPORTED_MODULE_11__["default"],
+    src: _videos_homescreen2_mp4__WEBPACK_IMPORTED_MODULE_12__["default"],
+    poster: _images_tdt_welcome02_jpg__WEBPACK_IMPORTED_MODULE_13__,
     type: 'video/mp4'
   },
   {
     name: 'dance-video-3',
-    src: _videos_homescreen3_mp4__WEBPACK_IMPORTED_MODULE_12__["default"],
+    src: _videos_homescreen3_mp4__WEBPACK_IMPORTED_MODULE_14__["default"],
+    poster: _images_tdt_welcome03_jpg__WEBPACK_IMPORTED_MODULE_15__,
     type: 'video/mp4'
   },
   {
     name: 'dance-video-4',
-    src: _videos_homescreen4_mp4__WEBPACK_IMPORTED_MODULE_13__["default"],
+    src: _videos_homescreen4_mp4__WEBPACK_IMPORTED_MODULE_16__["default"],
+    poster: _images_tdt_welcome04_jpg__WEBPACK_IMPORTED_MODULE_17__,
     type: 'video/mp4'
   }
 ]
@@ -25835,7 +26824,7 @@ const elements = [
 ;
 
 
-document.body.appendChild((0,_components_welcome_page_js__WEBPACK_IMPORTED_MODULE_14__.WelcomePage)(elements,welcomeLogo));
+document.body.appendChild((0,_components_welcome_page_js__WEBPACK_IMPORTED_MODULE_18__.WelcomePage)(elements,welcomeLogo));
 
 const startButton = document.querySelector('.get-started');
 startButton.addEventListener('click',activatePage);
@@ -25851,84 +26840,6 @@ function activatePage(){
   },1500);
 }
 
-//Custom cursor
-const cursor = document.createElement('div');
-cursor.id = 'custom-cursor';
-const cursorShadow = document.createElement('div');
-cursorShadow.id = 'custom-cursor-shadow';
-document.body.appendChild(cursor);
-document.body.appendChild(cursorShadow);
-
-let prevMouseX = 0, prevMouseY =0;
-let mouseX = 0, mouseY = 0;
-let posX = 0, posY =0;
-let velX = 0, velY =0;
-let lastMouseTime = 0;
-let currentMouseTime = 0;
-const springConstant = 500;
-const dampingCoefficient = 50;
-const deformationFactor = 1.1;
-function deformationMatrix(deformationFactor,directionVector){
-  const norm = Math.sqrt(directionVector[0]*directionVector[0]+directionVector[1]*directionVector[1]);
-  if(norm === 0){
-    return [[1,0],[0,1]];
-  }else{
-    const unitDirector = [directionVector[0]/norm, directionVector[1]/norm];
-    return [[deformationFactor*unitDirector[0]*unitDirector[0]+unitDirector[1]*unitDirector[1]/deformationFactor, (deformationFactor-1/deformationFactor) * unitDirector[0]*unitDirector[1]],
-    [(deformationFactor-1/deformationFactor) * unitDirector[0]*unitDirector[1],deformationFactor*unitDirector[1]*unitDirector[1]+unitDirector[0]*unitDirector[0]/deformationFactor]];
-  }
-}
-
-let cursorAnimationId;
-
-const coords = {x: 0, y: 0};
-const cursorElements = [cursor,cursorShadow];
-
-cursorElements.forEach(function (element){
-  element.x = 0;
-  element.y = 0;
-});
-
-window.addEventListener('mousemove', (event) => {
-  coords.x = event.clientX;
-  coords.y = event.clientY;
-  lastMouseTime = Date.now();
-  animateCursor();
-  if(!cursorAnimationId){
-    animateCursor();
-  }
-});
-
-function animateCursor(){
-  currentMouseTime = Date.now();
-  let x = coords.x;
-  let y = coords.y;
-
-  cursorElements.forEach(function(element,index){
-    element.x = x;
-    element.y = y;
-
-    const nextElement = cursorElements[(index+1)%cursorElements.length];
-    x += (nextElement.x - x)*0.99;
-    y += (nextElement.y - y)*0.99;
-  })
-
-  // //Move cursor to position of mouse
-  cursor.style.transform = `translate(${cursor.x-3}px,${cursor.y-3}px)`;
-  const dx = (cursorShadow.x - cursor.x);
-  const dy = (cursorShadow.y - cursor.y);
-  const distance = Math.sqrt(dx * dx + dy * dy);
-  const A = deformationMatrix(deformationFactor,[-dy,dx]);
-  cursorShadow.style.transform = `matrix(${A[0][0]},${A[0][1]},${A[1][0]},${A[1][1]},${cursorShadow.x - 20},${cursorShadow.y - 20})`;
-  
-  if(distance > 0.1){
-    cursorAnimationId = requestAnimationFrame(animateCursor);
-  }else{
-    cursorAnimationId = null;
-    cursorShadow.style.transform = `matrix(${1},${0},${0},${1},${cursor.x - 20},${cursor.y - 20})`;
-  }
-}
-
 //Transition
 const transitionScreen = document.createElement('div');
 transitionScreen.classList.add('transition-screen');
@@ -25937,18 +26848,19 @@ page.appendChild(transitionScreen);
 // import { doubleLogo } from './components/logo.js';
 
 
-const mainLogoConstructor = new _components_logo_js__WEBPACK_IMPORTED_MODULE_15__.Logo(mainLogoSrc);
+const mainLogoConstructor = new _components_logo_js__WEBPACK_IMPORTED_MODULE_19__.Logo(mainLogoSrc);
 const mainLogoContainer = mainLogoConstructor.createLogo();
 const mainLogo = mainLogoContainer.querySelector('.'+mainLogoSrc.className);
+mainLogo.addEventListener('click',goHome);
 page.appendChild(mainLogoContainer);
-const auxLogoConstructor = new _components_logo_js__WEBPACK_IMPORTED_MODULE_15__.Logo(auxLogoSrc);
+const auxLogoConstructor = new _components_logo_js__WEBPACK_IMPORTED_MODULE_19__.Logo(auxLogoSrc);
 const auxLogoContainer = auxLogoConstructor.createLogo();
 const auxLogo = auxLogoContainer.querySelector('.'+auxLogoSrc.className);
 page.appendChild(auxLogoContainer);
 
 
 
-const menuButtonConstructor = new _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_16__.MenuButton();
+const menuButtonConstructor = new _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_20__.MenuButton();
 const menuButton = menuButtonConstructor.createMenuButton();
 page.appendChild(menuButton);
 
@@ -25981,7 +26893,7 @@ const menuItems = [
 
 ;
 
-const menuConstructor = new _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_16__.InfiniteMenu(menuItems);
+const menuConstructor = new _components_infinite_menu_js__WEBPACK_IMPORTED_MODULE_20__.InfiniteMenu(menuItems);
 const menu = menuConstructor.createMenu();
 
 page.appendChild(menu);
@@ -26157,7 +27069,7 @@ const DesignCredits = {
   creditor: "Durounseki",
 }
 
-const footerConstructor = new _components_footer_js__WEBPACK_IMPORTED_MODULE_17__.Footer(companyCopyright,companySns,DesignCredits);//Instantiate a Footer object
+const footerConstructor = new _components_footer_js__WEBPACK_IMPORTED_MODULE_21__.Footer(companyCopyright,companySns,DesignCredits);//Instantiate a Footer object
 
 const footer = footerConstructor.createFooter();
 
@@ -26177,6 +27089,15 @@ menuTabs.forEach(tab => {
   tab.addEventListener('click', changePage);
 });
 
+function goHome(){
+  
+  const nextPage = pages['home'];
+  const currentPage = document.querySelector('.content');
+  page.removeChild(currentPage);
+    //Load page
+  page.appendChild(nextPage);
+
+}
 function changePage(event){
   //Clear current content
   const tab = event.target;
